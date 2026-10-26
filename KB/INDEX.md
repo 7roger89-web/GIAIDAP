@@ -27,6 +27,13 @@ Bảng tra theo từ khóa. Khớp thì dùng, không khớp thì tạo RUN mớ
 5. Có mục mới thay mục cũ => đổi mục cũ thành `SUPERSEDED`, không xóa.
 6. Không đưa kết luận chưa kiểm vào KB; ghi nhãn `FACT` / `INFERENCE` / `UNKNOWN` trong file KB.
 
+## MỞ RỘNG SO VỚI NGUỒN (khai báo)
+
+- GIAIDAP **mở rộng** so với nguồn thượng nguồn: nguồn chỉ giữ **bài học từ lỗi** (experience lifecycle); GIAIDAP dùng KB để giữ **tri thức lĩnh vực** — kiến thức dùng lại được, không nhất thiết sinh ra từ một lỗi.
+- **Điều kiện ghi mới: chỉ ghi khi có khả năng tái dùng.** Phải nêu được ít nhất một tình huống tương lai mà mục này sẽ được tra lại. Không nêu được => không ghi vào KB, để trong `RUNS/`.
+- Quy trình không-khớp giữ nguyên: **mở RUN rồi thêm dòng** — không ghi thẳng vào bảng khi chưa có RUN.
+- Điều kiện này khai ở đây, **không sửa câu chữ LUẬT 12** (LUẬT 12 nói "GHI LẠI mục KB mới"; mục này quy định **cách ghi** và **điều kiện ghi**).
+
 ## Ghi chú
 
 - Dòng ví dụ `nhập khẩu, bình nóng lạnh, trung quốc` là **TODO**, chưa phải tri thức đã kiểm.

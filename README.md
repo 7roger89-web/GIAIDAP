@@ -39,6 +39,8 @@ PROTOCOL/multi-brain-loop.md
 PROTOCOL/handoff-packet.md
 KB/INDEX.md
 RUNS/README.md
+RUNS/0000-pr1-verify/B.md
+RUNS/0000-pr1-verify/DECISION.md
 ```
 
 ## GIAIDAP không phải
@@ -47,4 +49,4 @@ RUNS/README.md
 - Không phải nơi lưu transcript chat dài.
 - Không phải daemon, script hay CI phức tạp.
 
-TRẠNG THÁI: V1 — 2026-10-26. Chưa có mục KB nội dung; `KB/INDEX.md` mới có dòng ví dụ.
+TRẠNG THÁI: V1 + vá V2 — 2026-10-26. Chưa có mục KB nội dung; `KB/INDEX.md` mới có dòng ví dụ.

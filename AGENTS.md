@@ -12,13 +12,11 @@ Không bỏ bước. Thiếu file hoặc không đọc được => `LAW_CHECK=BL
 
 ## 1. Biên lai đọc luật (bắt buộc)
 
-Mỗi vai phát biên lai **RIÊNG**, ngay đầu output:
+Mỗi vai phát biên lai **RIÊNG**, ngay đầu output. Hai khối dưới đây là **TEMPLATE**, không phải biên lai thật:
 
 ```text
-LAW_CHECK=PASS | SOURCE=LAW/00-SUPREME-LAW.md | SOURCE_SHA256=<SHA256> | DATE=<YYYY-MM-DD>
+LAW_CHECK=PASS | SOURCE=LAW/00-SUPREME-LAW.md | SOURCE_SHA256=<SHA256 thật> | DATE=<YYYY-MM-DD>
 ```
-
-hoặc:
 
 ```text
 LAW_CHECK=BLOCKED | REASON=<lý do>
@@ -26,7 +24,9 @@ LAW_CHECK=BLOCKED | REASON=<lý do>
 
 Không copy biên lai của vai khác. Không có biên lai hợp lệ => `LAW_CONTEXT_BLOCKED`.
 
-Ví dụ ngày hợp lệ: `DATE=2026-10-26`. `SOURCE_SHA256` là SHA-256 của đúng file luật đã đọc; nếu không tính được, ghi `UNKNOWN`.
+`PASS` chỉ hợp lệ khi `SOURCE_SHA256` là SHA-256 **thật** của đúng file luật đã đọc và kiểm lại được. Không tính được SHA (không có file, chỉ có trích đoạn trong chat) => phát `LAW_CHECK=BLOCKED`; **không** có nhánh PASS với `SOURCE_SHA256=UNKNOWN`.
+
+Cách tính: `sha256sum LAW/00-SUPREME-LAW.md`.
 
 ## 2. Nhãn nhận thức (bắt buộc)
 

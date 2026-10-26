@@ -9,21 +9,24 @@ PROVENANCE_STATUS=PENDING_VERIFICATION
 PROVENANCE_SOURCE=7roger89-web/P2P-upgrade-github-1@main:docs/p2p-development/P2P-OPERATIONS-NOTEBOOK.md
 PROVENANCE_TYPE=DERIVED_ADAPTATION
 PROVENANCE_MAP=LAW/00-PROVENANCE-MAP.md
-PROVENANCE_ANCHORS=mục 2A + Supreme laws 1-8 + preflight + RULE 01-21 (chi tiết bên dưới)
+PROVENANCE_ANCHORS=mục 2A + Supreme laws 1-9 + preflight + 10 RULE thực dùng (chi tiết bên dưới)
   - Mục 2A: "## 2A. P2P_SUPREME_OPERATING_LAW_V1"
-  - Khối "### Supreme laws" gồm 8 mục: OWNER_OUTCOME_AND_AUTHORITY_ARE_INVARIANTS, SIMPLEST_USEFUL_PATH_TO_COMPLETION, REAL_STATE_AND_EVIDENCE_OVERRIDE_ASSUMPTIONS, RECOVER_ADAPTIVELY, PRESERVE_CONTINUITY_AND_STOP, PROMPT_TITLE_DESTINATION_AND_PLAN_STATE_ARE_EXPLICIT, ANALYTICAL_AUTONOMY_AND_DELEGATION_ALIGNMENT, TASK_CONTRACT_AND_ACCEPTANCE_FIDELITY
+  - Khối "### Supreme laws" gồm 9 mục: OWNER_OUTCOME_AND_AUTHORITY_ARE_INVARIANTS, SIMPLEST_USEFUL_PATH_TO_COMPLETION, REAL_STATE_AND_EVIDENCE_OVERRIDE_ASSUMPTIONS, RECOVER_ADAPTIVELY, PRESERVE_CONTINUITY_AND_STOP, PROMPT_TITLE_DESTINATION_AND_PLAN_STATE_ARE_EXPLICIT, ANALYTICAL_AUTONOMY_AND_DELEGATION_ALIGNMENT, TASK_CONTRACT_AND_ACCEPTANCE_FIDELITY, EXECUTOR_INPUT_FORMAT_AND_ARTIFACT_TRANSPORT_FIDELITY
   - Khối "### Bounded ACTIVE experience preflight invariant"
-  - RULE 01-21: từ "### RULE 01 — EXPLICIT_DESTINATION" đến "### RULE 21 — BEGINNER_PLAIN_LANGUAGE_FIRST" (22 mục RULE)
-PROVENANCE_NOTE=chưa đối chiếu bằng bên độc lập; nguồn tồn tại và đã xác minh sự tồn tại, nhưng bảng ánh xạ LUẬT 01-14 -> mục nguồn (PROVENANCE_MAP) do Writer lập, chưa được vai B xác nhận.
+  - RULE thực dùng làm nguồn: 01, 02, 03, 04, 05, 07, 08, 12, 14, 16
+  - RULE ngoài phạm vi (không là nguồn của luật nào trong file này): 06, 09, 10, 11, 13, 15, 17, 18, 19, 20, 21. RULE 15 liên quan PROTOCOL/arena-agent-mode.md §7 nhưng không dùng làm nguồn luật.
+PROVENANCE_NOTE=chưa đối chiếu bằng bên độc lập; nguồn tồn tại và đã xác minh sự tồn tại, nhưng bảng ánh xạ LUẬT 01-15 -> mục nguồn (PROVENANCE_MAP) do Writer lập, chưa được vai B xác nhận.
 
 ## 0. Hiệu lực và biên lai đọc luật
-Mọi AI/agent/não đọc repo này phải đọc file này TRƯỚC khi làm việc thật và phát biên lai:
-  LAW_CHECK=PASS | SOURCE=<nguồn thật> | SOURCE_SHA256=<sha nội dung> | DATE=<ngày>
+Mọi AI/agent/não đọc repo này phải đọc file này TRƯỚC khi làm việc thật và phát biên lai.
+Mẫu dưới đây là TEMPLATE, không phải biên lai thật:
+  LAW_CHECK=PASS | SOURCE=<nguồn thật> | SOURCE_SHA256=<SHA-256 thật> | DATE=<ngày>
   hoặc LAW_CHECK=BLOCKED | REASON=<lý do>
 Không có biên lai hợp lệ => không làm việc thật (LAW_CONTEXT_BLOCKED).
 Biên lai do TỪNG vai tự phát; không copy biên lai của vai khác. Mỗi vai (A, B, C, tay chân) phát biên lai RIÊNG.
 Thứ tự ưu tiên nguồn luật: luật thượng nguồn > bản luật trong repo > capsule trong prompt.
-SOURCE_SHA256 là SHA-256 của đúng nội dung nguồn đã đọc (file hoặc capsule); nếu không tính được, ghi SOURCE_SHA256=UNKNOWN.
+Điều kiện của PASS: SOURCE_SHA256 phải là SHA-256 THẬT của đúng nội dung nguồn đã đọc và kiểm lại được.
+Không tính được SHA (không có file, không đọc được byte, chỉ có trích đoạn trong chat) => LAW_CHECK=BLOCKED. Không có nhánh "PASS với SOURCE_SHA256=UNKNOWN".
 
 ## 0.1. GIỚI HẠN CỦA PR1
 Biên lai của PR1 là VÒNG TRÒN: file LAW/00 do chính Writer viết, nên việc Writer đọc lại và phát LAW_CHECK không phải kiểm chứng độc lập.
@@ -88,4 +91,14 @@ Không tạo bản luật song song. File này là luật duy nhất của GIAID
 
 ## LUẬT 14 — DỪNG KHI ĐỦ BẰNG CHỨNG
 Đủ để nghiệm thu thì dừng. Báo cáo chỉ khi có ngoại lệ / blocker / quyết định cần Owner.
+
+## LUẬT 15 — ĐỊNH DẠNG ĐẦU VÀO VÀ VẬN CHUYỂN ARTIFACT
+Không được yêu cầu Owner (hoặc executor khác) đưa một artifact qua đường mà nơi nhận không thực sự đọc được.
+LOCAL_ARTIFACT_EXISTS ≠ DESTINATION_CAN_CONSUME_ARTIFACT. Có file ở máy/chat/repo này không có nghĩa là nơi khác nhận trực tiếp được.
+Ưu tiên vận chuyển trực tiếp, nguyên bản, không biến đổi ngữ nghĩa; khi danh tính artifact quan trọng thì gắn ORIGINAL_FILENAME + ORIGINAL_BYTE_SIZE + ORIGINAL_SHA256.
+Không đổi đuôi file, không giả MIME, không âm thầm chuyển sang định dạng khác nghĩa, không bảo Owner upload một thứ không upload được.
+Nếu buộc phải mã hoá để vận chuyển (ví dụ Base64) thì đó chỉ là encoding vận chuyển: BASE64_TEXT ≠ ORIGINAL_BINARY; không phải mã hoá bảo mật, không phải bằng chứng toàn vẹn, không miễn trừ Owner Gate.
+Vật liệu vận chuyển tạm nằm ngoài worktree: EPHEMERAL_TRANSPORT ≠ PROJECT_SOURCE.
+Luật này không phụ thuộc executor; Arena chỉ là trường hợp đại diện.
+
 === HẾT ===

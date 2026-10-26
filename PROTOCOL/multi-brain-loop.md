@@ -34,7 +34,7 @@ Arena: ghi file vào `RUNS/`, chạy search khi được yêu cầu, mở PR; kh
 | Vai | Chỉ nhận | Không được xem | Xuất | Phải trả lời |
 |---|---|---|---|---|
 | **A — Proposer** | `QUESTION.md` (câu hỏi thô) | A/B/C của vòng khác, kết luận của Owner, KB kết luận | `A.md` | Đề xuất gì? Giả định gì? Độ tin cậy? `UNKNOWN` nào? |
-| **B — Challenger / Verifier** | `QUESTION.md` + `A.md` | C, kết luận của Owner, chat của A, tài liệu ngoài 2 file | `B.md` | A sai/thiếu ở đâu? Phản ví dụ? Nguồn đối lập? A tự mâu thuẫn chỗ nào? |
+| **B — Challenger / Verifier** | `QUESTION.md` + `A.md` | C, kết luận của Owner, chat của A, tài liệu ngoài 2 file (kể cả web search) | `B.md` | A sai/thiếu ở đâu? Phản ví dụ? Nguồn đối lập **đã có trong 2 file**? A tự mâu thuẫn chỗ nào? |
 | **C — Judge / Synthesizer** | `QUESTION.md` + `A.md` + `B.md` | Kết luận của Owner, chat của A/B, tài liệu ngoài 3 file | `C.md` | Phán quyết? Lý do? Độ tin cậy? Còn `UNKNOWN` gì? Cần kiểm thêm gì? |
 
 - **A** không nhận `A.md` cũ, không nhận `B.md`, không nhận `C.md`. Nếu Owner muốn A xét lại, đó là một `RUN` mới.
@@ -49,10 +49,12 @@ Arena: ghi file vào `RUNS/`, chạy search khi được yêu cầu, mở PR; kh
 - Không copy `LAW_CHECK` của vai khác. Mỗi vai phát biên lai riêng.
 - Không rò rỉ nội dung: A không thấy B/C; B không thấy C; C chỉ thấy đúng 3 file.
 - Nếu một vai đã thấy tài liệu ngoài phạm vi, ghi rõ trong `INPUT_REF` (ví dụ `+ extra: ...`) và đánh dấu `CONTAMINATED=YES`. Owner quyết định mở RUN mới.
+- **B chỉ được dẫn nguồn đã có trong `QUESTION.md` hoặc `A.md`.** B không tự tra web, không tự mở tài liệu ngoài. Nếu buộc phải tra ngoài: dừng, ghi `CONTAMINATED=YES | NGOÀI_PHẠM_VI=<cái gì>`, **kết quả RUN hiện tại không dùng làm phán quyết**, và Owner mở RUN mới.
+- C cũng chỉ đối chiếu trong 3 file; nếu C phải tra ngoài thì áp cùng quy tắc `CONTAMINATED=YES`.
 
 ## 4. Header chuẩn mỗi file
 
-Mọi file `A.md`, `B.md`, `C.md` mở đầu bằng đúng 6 trường, mỗi trường một dòng. Đây là ví dụ cho `A.md`; `B.md` thêm `A.md`, `C.md` thêm `A.md` + `B.md` vào `INPUT_REF`:
+Mọi file `A.md`, `B.md`, `C.md` mở đầu bằng đúng 6 trường, mỗi trường một dòng. Khối dưới đây là **TEMPLATE** cho `A.md` (không phải biên lai thật); `B.md` thêm `A.md`, `C.md` thêm `A.md` + `B.md` vào `INPUT_REF`:
 
 ```text
 RUN_ID: 0001-nhap-khau-binh-nong-lanh
@@ -85,7 +87,7 @@ LAW_CHECK: PASS | SOURCE=LAW/00-SUPREME-LAW.md | SOURCE_SHA256=<SHA256> | DATE=2
 - `## LỖI` — lỗi logic, lỗi dữ kiện, lỗi phạm vi.
 - `## THIẾU` — bằng chứng/khía cạnh A bỏ sót.
 - `## PHẢN VÍ DỤ` — trường hợp làm đề xuất A sai hoặc không đủ.
-- `## NGUỒN ĐỐI LẬP` — nguồn mâu thuẫn với A, kèm ngày.
+- `## NGUỒN ĐỐI LẬP` — nguồn mâu thuẫn với A **và đã có trong QUESTION.md/A.md**, kèm ngày. Muốn dẫn nguồn ngoài 2 file => xem §3, phải ghi `CONTAMINATED=YES` và mở RUN mới.
 - `## A TỰ MÂU THUẪN` — chỗ A nói hai điều không khớp.
 - `## UNKNOWN` — điều B không kiểm được.
 

@@ -7,7 +7,13 @@ TRẠNG THÁI: ACTIVE | NGÀY: 2026-10-26
 
 PROVENANCE_STATUS=PENDING_VERIFICATION
 PROVENANCE_SOURCE=7roger89-web/P2P-upgrade-github-1@main:docs/p2p-development/P2P-OPERATIONS-NOTEBOOK.md
-PROVENANCE_NOTE=chưa đối chiếu bằng bên độc lập; chỉ chép theo prompt Owner.
+PROVENANCE_TYPE=DERIVED_ADAPTATION
+PROVENANCE_ANCHORS=mục 2A + Supreme laws 1-8 + preflight + RULE 01-21 (chi tiết bên dưới)
+  - Mục 2A: "## 2A. P2P_SUPREME_OPERATING_LAW_V1"
+  - Khối "### Supreme laws" gồm 8 mục: OWNER_OUTCOME_AND_AUTHORITY_ARE_INVARIANTS, SIMPLEST_USEFUL_PATH_TO_COMPLETION, REAL_STATE_AND_EVIDENCE_OVERRIDE_ASSUMPTIONS, RECOVER_ADAPTIVELY, PRESERVE_CONTINUITY_AND_STOP, PROMPT_TITLE_DESTINATION_AND_PLAN_STATE_ARE_EXPLICIT, ANALYTICAL_AUTONOMY_AND_DELEGATION_ALIGNMENT, TASK_CONTRACT_AND_ACCEPTANCE_FIDELITY
+  - Khối "### Bounded ACTIVE experience preflight invariant"
+  - RULE 01-21: từ "### RULE 01 — EXPLICIT_DESTINATION" đến "### RULE 21 — BEGINNER_PLAIN_LANGUAGE_FIRST" (22 mục RULE)
+PROVENANCE_NOTE=chưa đối chiếu bằng bên độc lập; nguồn tồn tại và đã xác minh sự tồn tại, nhưng chưa có bảng ánh xạ LUẬT 01-14 -> mục nguồn.
 
 ## 0. Hiệu lực và biên lai đọc luật
 Mọi AI/agent/não đọc repo này phải đọc file này TRƯỚC khi làm việc thật và phát biên lai:

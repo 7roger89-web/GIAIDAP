@@ -5,6 +5,7 @@ Bộ nhớ chung + sổ luật cho quy trình nhiều AI.
 - Chat là nơi làm việc; **sự thật nằm trong repo**.
 - Repo giữ luật, giao thức, tri thức và nhật ký chạy. Không dựa vào ký ức của một phiên chat.
 - GIAIDAP là **bản chuyển thể** từ [P2P-upgrade-github-1](https://github.com/7roger89-web/P2P-upgrade-github-1), không phải bản sao. Khi bản gốc đổi, rà lại `LAW/00-SUPREME-LAW.md`.
+- Provenance của luật hiện là `PENDING_VERIFICATION`; xem khối provenance đầu `LAW/00-SUPREME-LAW.md`. Chưa có bên độc lập xác nhận.
 
 ## 4 khối
 

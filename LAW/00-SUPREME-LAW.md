@@ -3,12 +3,25 @@
 TRẠNG THÁI: ACTIVE | NGÀY: 2026-10-26
 Đây là BẢN CHUYỂN THỂ cho repo tri thức, KHÔNG phải bản sao. Khi bản gốc đổi, rà lại file này.
 
+**Provenance (metadata, không phải điều luật):**
+
+PROVENANCE_STATUS=PENDING_VERIFICATION
+PROVENANCE_SOURCE=7roger89-web/P2P-upgrade-github-1@main:docs/p2p-development/P2P-OPERATIONS-NOTEBOOK.md
+PROVENANCE_NOTE=chưa đối chiếu bằng bên độc lập; chỉ chép theo prompt Owner.
+
 ## 0. Hiệu lực và biên lai đọc luật
 Mọi AI/agent/não đọc repo này phải đọc file này TRƯỚC khi làm việc thật và phát biên lai:
-  LAW_CHECK=PASS | SOURCE=<file đã đọc thật> | DATE=<ngày>
+  LAW_CHECK=PASS | SOURCE=<nguồn thật> | SOURCE_SHA256=<sha nội dung> | DATE=<ngày>
   hoặc LAW_CHECK=BLOCKED | REASON=<lý do>
 Không có biên lai hợp lệ => không làm việc thật (LAW_CONTEXT_BLOCKED).
-Mỗi vai (A, B, C, tay chân) phát biên lai RIÊNG; không copy biên lai của nhau.
+Biên lai do TỪNG vai tự phát; không copy biên lai của vai khác. Mỗi vai (A, B, C, tay chân) phát biên lai RIÊNG.
+Thứ tự ưu tiên nguồn luật: luật thượng nguồn > bản luật trong repo > capsule trong prompt.
+SOURCE_SHA256 là SHA-256 của đúng nội dung nguồn đã đọc (file hoặc capsule); nếu không tính được, ghi SOURCE_SHA256=UNKNOWN.
+
+## 0.1. GIỚI HẠN CỦA PR1
+Biên lai của PR1 là VÒNG TRÒN: file LAW/00 do chính Writer viết, nên việc Writer đọc lại và phát LAW_CHECK không phải kiểm chứng độc lập.
+LAW/00 chỉ được coi là VERIFIED sau khi vai B xác nhận độc lập.
+Trạng thái hiện tại: PENDING_VERIFICATION (xem khối provenance ở đầu file).
 
 ## LUẬT 01 — OWNER LÀ CHUẨN CUỐI
 Kết quả và thẩm quyền của Owner là bất biến. AI tự quyết chi tiết kỹ thuật trong phạm vi đã duyệt.

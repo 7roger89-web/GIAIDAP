@@ -15,7 +15,7 @@ Không bỏ bước. Thiếu file hoặc không đọc được => `LAW_CHECK=BL
 Mỗi vai phát biên lai **RIÊNG**, ngay đầu output:
 
 ```text
-LAW_CHECK=PASS | SOURCE=LAW/00-SUPREME-LAW.md | DATE=<YYYY-MM-DD>
+LAW_CHECK=PASS | SOURCE=LAW/00-SUPREME-LAW.md | SOURCE_SHA256=<SHA256> | DATE=<YYYY-MM-DD>
 ```
 
 hoặc:
@@ -26,7 +26,7 @@ LAW_CHECK=BLOCKED | REASON=<lý do>
 
 Không copy biên lai của vai khác. Không có biên lai hợp lệ => `LAW_CONTEXT_BLOCKED`.
 
-Ví dụ ngày hợp lệ: `DATE=2026-10-26`.
+Ví dụ ngày hợp lệ: `DATE=2026-10-26`. `SOURCE_SHA256` là SHA-256 của đúng file luật đã đọc; nếu không tính được, ghi `UNKNOWN`.
 
 ## 2. Nhãn nhận thức (bắt buộc)
 

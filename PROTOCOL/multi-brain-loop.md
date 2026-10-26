@@ -60,7 +60,7 @@ ROLE: A
 INPUT_REF: RUNS/0001-nhap-khau-binh-nong-lanh/QUESTION.md
 DATE: 2026-10-26
 MODEL: UNKNOWN
-LAW_CHECK: PASS | SOURCE=LAW/00-SUPREME-LAW.md | DATE=2026-10-26
+LAW_CHECK: PASS | SOURCE=LAW/00-SUPREME-LAW.md | SOURCE_SHA256=<SHA256> | DATE=2026-10-26
 ```
 
 - `RUN_ID`: 4 số + slug, khớp tên folder.
@@ -68,7 +68,7 @@ LAW_CHECK: PASS | SOURCE=LAW/00-SUPREME-LAW.md | DATE=2026-10-26
 - `INPUT_REF`: đường dẫn file thật, không dán nội dung dài.
 - `DATE`: ngày viết file, `YYYY-MM-DD`.
 - `MODEL`: tên model nếu xác minh được; nếu không, `UNKNOWN`.
-- `LAW_CHECK`: `PASS | SOURCE=... | DATE=...` hoặc `BLOCKED | REASON=...`.
+- `LAW_CHECK`: `PASS | SOURCE=... | SOURCE_SHA256=... | DATE=...` hoặc `BLOCKED | REASON=...`.
 
 ## 5. Nội dung tối thiểu
 

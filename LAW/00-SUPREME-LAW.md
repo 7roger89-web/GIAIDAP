@@ -83,7 +83,12 @@ phải ghi ngày kiểm và hạn.
 
 ## LUẬT 12 — TRA CỨU BẰNG TỪ KHÓA
 Vào repo => tra KB/INDEX.md theo từ khóa. KHỚP và còn ACTIVE => dùng làm điểm xuất phát
-(vẫn kiểm nguồn nếu là dữ kiện dễ cũ). KHÔNG KHỚP => tự tìm + suy nghĩ, rồi GHI LẠI mục KB mới.
+(vẫn kiểm nguồn nếu là dữ kiện dễ cũ). KHÔNG KHỚP => mở `RUNS/<4 số>-<slug>/`, tự tìm, ghi kết quả
+vào RUN, rồi mới thêm dòng mới vào KB/INDEX.md (không ghi thẳng vào bảng khi chưa có RUN).
+Chỉ ghi mục KB mới khi có khả năng tái dùng: phải nêu được ít nhất một tình huống tương lai mà mục đó
+sẽ được tra lại; không nêu được => giữ trong `RUNS/`, không thêm dòng.
+MỞ RỘNG so với nguồn (khai báo): KB giữ TRI THỨC LĨNH VỰC — kiến thức dùng lại được, không nhất thiết
+sinh ra từ một lỗi; nguồn chỉ có experience lifecycle (bài học từ lỗi). Đây là phần GIAIDAP tự chế.
 Từ khóa không phân biệt hoa/thường, bỏ dấu.
 
 ## LUẬT 13 — MỘT NGUỒN LUẬT DUY NHẤT

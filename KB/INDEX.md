@@ -32,7 +32,7 @@ Bảng tra theo từ khóa. Khớp thì dùng, không khớp thì tạo RUN mớ
 - GIAIDAP **mở rộng** so với nguồn thượng nguồn: nguồn chỉ giữ **bài học từ lỗi** (experience lifecycle); GIAIDAP dùng KB để giữ **tri thức lĩnh vực** — kiến thức dùng lại được, không nhất thiết sinh ra từ một lỗi.
 - **Điều kiện ghi mới: chỉ ghi khi có khả năng tái dùng.** Phải nêu được ít nhất một tình huống tương lai mà mục này sẽ được tra lại. Không nêu được => không ghi vào KB, để trong `RUNS/`.
 - Quy trình không-khớp giữ nguyên: **mở RUN rồi thêm dòng** — không ghi thẳng vào bảng khi chưa có RUN.
-- Điều kiện này khai ở đây, **không sửa câu chữ LUẬT 12** (LUẬT 12 nói "GHI LẠI mục KB mới"; mục này quy định **cách ghi** và **điều kiện ghi**).
+- Điều kiện ghi mới và quy trình không-khớp nay **đã nằm trong LUẬT 12** (sửa theo D1, vá lần 6). Mục này chỉ quy định **chi tiết cách ghi** (6 cột, chuẩn hóa từ khóa, nhãn `FACT`/`INFERENCE`/`UNKNOWN`). Hai chỗ phải mô tả **cùng một quy trình**; lệch nhau là lỗi.
 
 ## Ghi chú
 

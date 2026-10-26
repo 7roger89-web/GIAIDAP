@@ -71,6 +71,10 @@ LAW_CHECK: PASS | SOURCE=LAW/00-SUPREME-LAW.md | SOURCE_SHA256=<SHA256> | DATE=2
 - `DATE`: ngày viết file, `YYYY-MM-DD`.
 - `MODEL`: tên model nếu xác minh được; nếu không, `UNKNOWN`.
 - `LAW_CHECK`: `PASS | SOURCE=... | SOURCE_SHA256=... | DATE=...` hoặc `BLOCKED | REASON=...`.
+- **Riêng `B.md`** (và mọi file `B*.md`): bắt buộc thêm **2 trường hash tách riêng**, mỗi trường một dòng:
+  - `CONTENT_SHA256_B_DECLARED=...`: giá trị B tự khai. B không khai ⇒ `UNKNOWN`; người ghi file **không** được điền thay.
+  - `CONTENT_SHA256_WRITER_COMPUTED=...`: người ghi file tự băm.
+  - Hai trường này **khác nguồn, không được thay thế nhau**. Quy ước băm: bỏ hẳn dòng `CONTENT_SHA256_WRITER_COMPUTED=...` (một dòng không thể băm chính nó) rồi `sha256sum` phần còn lại.
 
 ## 5. Nội dung tối thiểu
 

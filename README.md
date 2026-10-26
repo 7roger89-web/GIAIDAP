@@ -49,4 +49,4 @@ RUNS/0000-pr1-verify/DECISION.md
 - Không phải nơi lưu transcript chat dài.
 - Không phải daemon, script hay CI phức tạp.
 
-TRẠNG THÁI: V1 + các vòng vá (mới nhất: vá lần 6) — 2026-10-26. `PROVENANCE_STATUS=PENDING_VERIFICATION`: bảng ánh xạ V3 chưa có kiểm độc lập cho bản này. Chưa có mục KB nội dung; `KB/INDEX.md` mới có dòng ví dụ.
+TRẠNG THÁI: V1 + các vòng vá (mới nhất: vá lần 7) — 2026-10-26. `PROVENANCE_STATUS=PENDING_VERIFICATION`: bảng ánh xạ V4 chưa có kiểm độc lập cho bản này. Chưa có mục KB nội dung; `KB/INDEX.md` mới có dòng ví dụ.

@@ -109,7 +109,7 @@ Leaderboard Agent Arena (S7) xếp hạng các orchestrator model theo tín hi�
 
 ## 6. Quy tắc tiêu đề chat
 
-- **Quy ước GIAIDAP** (từ LUẬT 08): với `CHAT_MODE=NEW_CHAT`, **dòng đầu tiên của prompt là tiêu đề người đọc được**. Dòng 1 ngắn, rõ, đúng việc; dòng 2 trở đi mới là yêu cầu chi tiết.
+- **Quy ước GIAIDAP** (từ LUẬT 08): với `CHAT_MODE=NEW_CHAT`, **dòng không trống đầu tiên** của prompt là tiêu đề người đọc được, đúng format `<PROJECT> — <bounded task/outcome>`, front-load từ phân biệt được; **cấm** boilerplate ở dòng đầu (`GỬI CHO:`, `DESTINATION=`, `TASK_ID=`, code fence, prefix `P2P` chung); `CHAT_TITLE` phải **bằng đúng** dòng đó. Dòng 2 trở đi mới là yêu cầu chi tiết.
 - **Trạng thái nguồn:** không tìm thấy tài liệu chính thức của Arena nói rằng Arena tự lấy dòng đầu tiên làm tiêu đề chat => đây là **quy ước vận hành của GIAIDAP**, không phải `FACT` về sản phẩm Arena. Hành vi UI thực tế: `UNKNOWN`.
 - Cách áp dụng an toàn: vẫn viết dòng 1 là tiêu đề; đồng thời ghi `CHAT_TITLE` trong packet để người mở chat copy đúng. Không giả định Arena sẽ parse tiêu đề từ dòng 1.
 

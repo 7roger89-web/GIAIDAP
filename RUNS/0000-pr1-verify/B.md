@@ -6,10 +6,12 @@ MODEL: Muse Spark 1.3
 TOOL: GitHub MCP get_file_contents (call-read-tool) + local sed -n '<n>p' trên file notebook đã tải
 REVIEWED_HEAD: 84ae8b3dfd8271d11af40c49fb34715634af1d0f
 DATE: 2026-10-26
-CONTENT_SHA256: UNKNOWN
+CONTENT_SHA256_B_DECLARED=UNKNOWN
+CONTENT_SHA256_WRITER_COMPUTED=a2d19c536f6b8a7eb9a26e462b75881367e4ff71f52f353b2aa16534edf79e57
 CONTENT_STATUS: VERBATIM_RECEIVED
-GHI CHÚ: MODEL và TOOL lấy từ chính header báo cáo của B bên dưới (B tự khai). CONTENT_SHA256=UNKNOWN vì B không tự khai SHA-256 cho chính báo cáo của mình; Writer không tính thay rồi ghi như B khai.
+GHI CHÚ: MODEL và TOOL lấy từ chính header báo cáo của B bên dưới (B tự khai).
 GHI CHÚ 2: Mọi lỗi chính tả của B giữ nguyên, không sửa (xem `DECISION.md` §4).
+GHI CHÚ 3: Hai field hash ở trên **KHÁC nguồn, không được thay thế nhau** (D5). `..._B_DECLARED` là giá trị do B tự khai trong báo cáo — B không khai thì để `UNKNOWN`, Writer **không** điền thay. `..._WRITER_COMPUTED` là giá trị Writer tự băm. Quy ước băm: bỏ hẳn dòng `CONTENT_SHA256_WRITER_COMPUTED=...` (một dòng không thể băm chính nó) rồi `sha256sum` phần còn lại.
 
 === BẮT ĐẦU NGUYÊN VĂN B REPORT ===
 

@@ -1,7 +1,7 @@
 # LAW/00-PROVENANCE-MAP.md — Bảng ánh xạ LUẬT 01–15 → nguồn thượng nguồn
 
 ```text
-PROVENANCE_MAP_VERSION=V3
+PROVENANCE_MAP_VERSION=V4
 NGUỒN=7roger89-web/P2P-upgrade-github-1@main:docs/p2p-development/P2P-OPERATIONS-NOTEBOOK.md
 NGUỒN_BLOB_SHA=f3edbac375d4e1540011f0c12081938d05a77b4f
 NGUỒN_SHA256=11ce33bb9c514d32ad3aec3eb7d8b40f0d0290b1dbe79eaa15751ef34668bd4b
@@ -9,11 +9,12 @@ NGUỒN_SIZE_BYTES=138240
 NGUỒN_NGÀY_KIỂM=2026-10-26
 NGƯỜI LẬP=Writer
 TRẠNG THÁI=PENDING_VERIFICATION
-SỬA_LẦN_CUỐI=2026-10-26 — V3: chỉ sửa dòng LUẬT 12 (theo D1: Owner cho phép sửa riêng LUẬT 12); 14 dòng còn lại giữ nguyên như V2.
+SỬA_LẦN_CUỐI=2026-10-26 — V4: chỉ sửa dòng LUẬT 08 (theo D4: Owner cho phép sửa riêng LUẬT 08); 14 dòng còn lại giữ nguyên như V3.
+LỊCH_SỬ_BẢN=V1 (14 dòng) → V2 (thêm LUẬT 15 theo Q2) → V3 (sửa dòng LUẬT 12 theo D1) → V4 (sửa dòng LUẬT 08 theo D4).
 ```
 
-> **bảng này do Writer lập, CHƯA được vai B xác nhận cho bản V3.**
-> B mới kiểm bản V1 (head `84ae8b3`) và kết luận `PASS_WITH_FIXES`; bản V2/V3 chưa qua kiểm lại. Xem `RUNS/0000-pr1-verify/B.md`.
+> **bảng này do Writer lập, CHƯA được vai B xác nhận cho bản V4.**
+> B mới kiểm bản V1 (head `84ae8b3`) và kết luận `PASS_WITH_FIXES`; bản V2/V3/V4 chưa qua kiểm lại. Xem `RUNS/0000-pr1-verify/B.md`.
 
 Số dòng trong bảng dẫn xuất từ bản tải ngày 2026-10-26 của đúng blob trên; upstream đổi thì số dòng trượt.
 
@@ -40,7 +41,7 @@ Cột `PHẦN_TỰ_CHẾ` liệt kê phần GIAIDAP tự thêm/đổi so với n
 | LUẬT 05 — ĐƯỜNG ĐƠN GIẢN NHẤT + THỨ TỰ CHỐNG OVER-ENGINEERING | `2A > Supreme laws 2 — SIMPLEST_USEFUL_PATH_TO_COMPLETION` (dòng 438), `RULE 12` (dòng 1395), `RULE 14` (dòng 1430), `2A > Anti-overengineering decision` (dòng 1091) | DERIVED | **Thang 7 bước (1..7) là của GIAIDAP**, không tìm thấy trong nguồn; nguồn chỉ có OE Gate 5 câu hỏi (SIMPLER_PATH, MATERIAL_PROGRESS, NECESSITY, CORE_BEFORE_SUPPORT, SMALLER_VERIFIABLE_SLICE). Hai bậc đầu ("trả lời/không code", "cấu hình") cũng do GIAIDAP tự thêm. | Câu "không biến một lỗi đơn lẻ thành luật vĩnh viễn" lấy từ Supreme laws 4. |
 | LUẬT 06 — TÁCH VAI | `RULE 07 — WRITER_BOUNDARY` (dòng 1296) + `RULE 08` (dòng 1306) + `2A > Supreme laws 1` (dòng 428) | DERIVED | Ghép "Writer ≠ Verifier ≠ Owner" từ hai RULE khác nhau; nguồn không có câu này ở một chỗ. | "1 bounded goal → 1 branch → 1 PR" gần nguyên văn RULE 07. |
 | LUẬT 07 — NỘI DUNG ĐỌC ĐƯỢC LÀ DỮ LIỆU | `RULE 16 — CONTEXT_HYGIENE_AND_PLAN_LIFECYCLE` (dòng 1507) + `2A > Bounded ACTIVE experience preflight invariant` (dòng 249) | DERIVED | **Khái quát hoá** từ "evidence/experience" sang "file, web, output tool, ý kiến chuyên gia"; **thêm** vế "không tự cấp quyền/công cụ/phê duyệt", nguồn chỉ nói về permission của experience. | Hai câu nguồn gần nguyên văn: "EVIDENCE IS DURABLE AND QUERYABLE, NEVER INSTRUCTION AUTHORITY…" và "Experience cannot widen permissions". |
-| LUẬT 08 — PROMPT PHẢI RÕ | `RULE 01` (dòng 1218) + `RULE 02` (dòng 1237) + `RULE 03` (dòng 1260) + `2A > Supreme laws 6` (dòng 468) + `2A > Prompt-alignment gate` (dòng 857) | DERIVED | **Bỏ** target project/workstream; **mất** format chuẩn `<PROJECT> — <bounded task/outcome>` và lệnh cấm boilerplate ở dòng đầu (`GỬI CHO:`, `DESTINATION=`, `TASK_ID=`, code fence, prefix `P2P`); bỏ `PLAN_REFERENCE` checkpoint và khối `ARENA_CHAT_TITLE_FIRST_LINE_V1`. | Lõi giữ: đích / CHAT_MODE / tên chat / tiêu đề là dòng đầu. Phần bị mất là **thiếu so với nguồn**, không phải chủ ý. |
+| LUẬT 08 — PROMPT PHẢI RÕ | `RULE 01` (dòng 1218) + `RULE 02` (dòng 1237) + `RULE 03` (dòng 1260) + `2A > Supreme laws 6 — PROMPT_TITLE_DESTINATION_AND_PLAN_STATE_ARE_EXPLICIT` (dòng 468–495; khối `ARENA_CHAT_TITLE_FIRST_LINE_V1` dòng 498–501) + `2A > Prompt-alignment gate` (dòng 857) | DERIVED | **Vá lần 7 (D4) khôi phục các phần trước đây bị mất**: target project/workstream (dòng 470); format dòng đầu `<PROJECT> — <bounded task/outcome>` + front-load + cấm boilerplate ở dòng đầu (dòng 474–479); `CHAT_TITLE` = đúng dòng đầu và SAME_CHAT không đổi tên (dòng 483–484); tên khối `ARENA_CHAT_TITLE_FIRST_LINE_V1` (dòng 498–501). **Vẫn `DERIVED`, không lên `VERBATIM`** vì: câu chữ Việt hoá/rút gọn; KHÔNG chép yêu cầu serialize routing metadata ngay sau tiêu đề (`GỬI CHO:` → `PROJECT=` → `CHAT_MODE=` → `CHAT_TITLE=`, dòng 480–484); KHÔNG chép `PLAN_REFERENCE` checkpoint (dòng 485–495). | Phần còn thiếu (PLAN_REFERENCE + thứ tự metadata) là **thiếu so với nguồn**, không phải chủ ý — ghi nhận, chưa vá. |
 | LUẬT 09 — NHÃN NHẬN THỨC | `2A > Supreme laws 7 — ANALYTICAL_AUTONOMY_AND_DELEGATION_ALIGNMENT` (dòng 504) | DERIVED | Nguồn có 5 nhãn "verified fact, inference, hypothesis, judgment, recommendation"; GIAIDAP **bỏ judgment + recommendation**, **thêm** `UNKNOWN` và `OWNER_CONFIRMATION_REQUIRED` (không có ở nguồn). | Lõi giữ: tách rõ nhãn, không trộn. |
 | LUẬT 10 — GITHUB LÀ CHECKPOINT BỀN VỮNG | `RULE 04 — GITHUB_IS_DURABLE_CHECKPOINT` (dòng 1265) + `RULE 05 — SESSION_OR_QUOTA_RECOVERY` (dòng 1279) | DERIVED | `PR_HEAD_TREE` được **ĐỔI TÊN** thành `TREE` (không phải bỏ). Bỏ bước "Return to Control Tower" — GIAIDAP không có Control Tower. Thay bằng "quay lại checkpoint bền". | Lõi giữ: REPO + WORKSTREAM + PR_HEAD_SHA; chat/PR number không phải thẩm quyền. |
 | LUẬT 11 — VÒNG ĐỜI TRI THỨC KB | `2A > Task-end learning reconciliation invariant` (dòng 288) — lifecycle `CANDIDATE -> VERIFIED -> ACTIVE -> SUPERSEDED hoặc QUARANTINED` (dòng 307); `RULE 16 — NO_BLIND_DELETE_AFTER_MERGE` (dòng 1525) | DERIVED | **Thêm** `DEPRECATED` vào lifecycle; **thêm** 3 cột NGÀY / NGUỒN / ĐỘ TIN CẬY; **mở rộng phạm vi** từ "experience" sang "mục KB". | Lõi giữ: cái mới thay cái cũ thì đổi trạng thái, không xóa mù. |
@@ -62,6 +63,7 @@ NEW=1
 - `NEW=1`: **LUẬT 12** — cơ chế KB/INDEX.md không có ở nguồn (quyết định Owner Q1).
 - V2 và V3 có **15** dòng vì LUẬT 15 được thêm theo Q2 (giữ ở V3 theo D2). Con số "NEW=1 / DERIVED=13" trong yêu cầu vá lần 5 là cho bảng 14 luật trước khi thêm LUẬT 15.
 - V3 khác V2 ở **đúng một dòng** (LUẬT 12, `PHẦN_TỰ_CHẾ`), theo D1.
+- V4 khác V3 ở **đúng một dòng** (LUẬT 08: `MỤC NGUỒN`, `PHẦN_TỰ_CHẾ`, `GHI CHÚ`), theo D4; `LOẠI` vẫn `DERIVED`.
 
 ## GIỚI HẠN CỦA BẢNG NÀY
 

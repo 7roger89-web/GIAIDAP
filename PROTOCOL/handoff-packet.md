@@ -6,7 +6,8 @@ Quy tắc chung:
 
 - Mỗi packet = một vai = một phiên/lần chạy.
 - `INPUT` ghi **đường dẫn file**, không dán nội dung dài.
-- Dòng đầu tiên của prompt `NEW_CHAT` là `CHAT_TITLE` (LUẬT 08).
+- Dòng **không trống** đầu tiên của prompt `NEW_CHAT` là tiêu đề, và `CHAT_TITLE` phải **bằng đúng** dòng đó (LUẬT 08); dòng đầu không được là boilerplate (`GỬI CHO:`, `DESTINATION=`, `TASK_ID=`, code fence, prefix `P2P` chung).
+- Các khối `PACKET->A/B/C` dưới đây là **mẫu nội dung**: khi gửi thật, đưa tiêu đề lên dòng không trống đầu tiên (bỏ nhãn `PACKET->A` khỏi dòng 1), rồi mới tới phần còn lại.
 - Không đưa `A.md`/`B.md`/`C.md` hoặc kết luận của Owner vào packet sai vai.
 - Ghi rõ ràng buộc và điều kiện dừng. Hết điều kiện dừng là dừng, không tự mở vòng mới.
 - Ba packet `PACKET->A/B/C` dùng đủ 8 trường: `TASK_ID`, `ROLE`, `CHAT_MODE`, `CHAT_TITLE`, `INPUT`, `OUTPUT`, `RÀNG BUỘC`, `ĐIỀU KIỆN DỪNG`.

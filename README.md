@@ -33,6 +33,7 @@ Bộ nhớ chung + sổ luật cho quy trình nhiều AI.
 README.md
 AGENTS.md
 LAW/00-SUPREME-LAW.md
+LAW/00-PROVENANCE-MAP.md
 PROTOCOL/arena-agent-mode.md
 PROTOCOL/multi-brain-loop.md
 PROTOCOL/handoff-packet.md

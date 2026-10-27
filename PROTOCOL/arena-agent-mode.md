@@ -86,6 +86,13 @@ Hệ quả cho GIAIDAP:
 - Không có repo connected: file nằm trong workspace, tải bằng nút **Download** (zip). Có repo connected: **không có zip download**, thay đổi đi qua GitHub (S1).
 - Sau khi PR merge hoặc close: phiên **không push được nữa**; file tạo sau mốc đó **không push, không tải, không mang sang phiên mới** (S1). Phải push xong trước khi merge, hoặc mở phiên mới cho việc mới.
 
+### 4.1. `BASE_PHAI_LA_MAIN` (bắt buộc)
+
+- Mọi PR mặc định phải có `baseRefName=main`. Kiểm bằng lệnh thật TRƯỚC khi báo cáo PR và TRƯỚC khi coi một PR là "sẽ vào main": `gh pr view <n> --json baseRefName,state`.
+- **Merge xong KHÔNG có nghĩa là đã vào main — chỉ có cây `main` là sự thật.** Một PR `MERGED` với base là nhánh khác chỉ đưa nội dung vào nhánh đó, không vào `main` (FACT 2026-10-27: PR #5 `MERGED` nhưng `baseRefName=arena/b960bf99-giaidap` — nhánh của #4 — nên nội dung #5 không vào main, phải reconcile bằng PR riêng).
+- Nếu BUỘC phải stack (PR con có base là nhánh của PR cha): ghi rõ tình trạng stack trong mô tả PR, và (a) merge PR con TRƯỚC PR cha, hoặc (b) retarget PR con về `main` (`gh pr edit <n> --base main`) NGAY khi PR cha merge. Không làm (a) hoặc (b) => nội dung PR con coi như CHƯA tồn tại trên main, dù trạng thái là `MERGED`.
+- Khi resume, trạng thái "đã vào main" phải được xác nhận lại bằng `MAIN_CONTENT_CHECK` (`PROTOCOL/resume-protocol.md` §2), không tin giá trị ghi sẵn.
+
 ## 5. Giới hạn phiên và model
 
 | Dữ kiện | Nhãn | Nguồn | Ngày |

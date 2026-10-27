@@ -27,7 +27,7 @@ Mọi phiên vào repo phải định vị trạng thái trước khi làm việ
 2. Ngay sau `LAW_CHECK`, kiểm tra quan hệ tổ tiên `SINH_TỪ_HEAD`, đối chiếu `sha256sum` thật và kiểm `STATE_TRUST=OK|DRIFT`, rồi phát biên lai `RESUME_CHECK` (hai dòng dưới là **TEMPLATE**):
 
 ```text
-RESUME_CHECK=PASS | STATE_HEAD=<sha> | READ_HEAD=<sha> | LAW_HASH_MATCH=<YES|NO> | PROTOCOL_HASH_MATCH=<YES|NO> | SKILL_HASH_MATCH=<YES|NO> | POST_MERGE_RECONCILE=<NEEDED|DONE> | OPEN=<...> | NEXT=<...>
+RESUME_CHECK=PASS | STATE_HEAD=<sha> | READ_HEAD=<sha> | LAW_HASH_MATCH=<YES|NO> | PROTOCOL_HASH_MATCH=<YES|NO> | SKILL_HASH_MATCH=<YES|NO> | POST_MERGE_RECONCILE=<NEEDED|DONE> | MAIN_CONTENT_CHECK=<PASS|FAIL> | OPEN=<...> | NEXT=<...>
 ```
 
 ```text

@@ -34,7 +34,7 @@ Ngay sau dòng `LAW_CHECK`, mọi phiên tiếp việc phải phát biên lai `R
 Hai khối dưới đây là **TEMPLATE**, không phải biên lai thật:
 
 ```text
-RESUME_CHECK=PASS | STATE_HEAD=<sha> | READ_HEAD=<sha> | LAW_HASH_MATCH=<YES|NO> | PROTOCOL_HASH_MATCH=<YES|NO> | SKILL_HASH_MATCH=<YES|NO> | POST_MERGE_RECONCILE=<NEEDED|DONE> | OPEN=<...> | NEXT=<...>
+RESUME_CHECK=PASS | STATE_HEAD=<sha> | READ_HEAD=<sha> | LAW_HASH_MATCH=<YES|NO> | PROTOCOL_HASH_MATCH=<YES|NO> | SKILL_HASH_MATCH=<YES|NO> | POST_MERGE_RECONCILE=<NEEDED|DONE> | MAIN_CONTENT_CHECK=<PASS|FAIL> | OPEN=<...> | NEXT=<...>
 ```
 
 ```text
@@ -51,6 +51,11 @@ Quy tắc kiểm hash:
 - **Hash khớp (`YES`)**: trong cùng phiên không cần đọc lại file đã đọc; trong phiên mới (`NEW_CHAT`), chỉ đọc đúng các file thuộc bộ đọc của vai hiện tại (§8).
 - **Hash lệch (`NO`)**: file đó đã đổi so với lúc ghi `STATE.md` => **bắt buộc đọc lại toàn bộ đúng file bị lệch** trước khi làm việc, đồng thời kiểm `STATE_TRUST` (§3).
 - **`POST_MERGE_RECONCILE=NEEDED|DONE`**: `NEEDED` = đây là phiên ĐẦU TIÊN sau một merge mà `STATE.md` chưa được đối chiếu với `main` thật; `DONE` = đã đối chiếu xong (xem §13). Khi `NEEDED`, phải chạy §13 TRƯỚC mọi việc bounded khác.
+- **`MAIN_CONTENT_CHECK=PASS|FAIL`** (bắt buộc MỖI lần resume, không chỉ sau merge):
+  - (a) re-verify `PR_STATE` bằng `gh` thật (`gh pr list --state all` hoặc `gh pr view <n> --json state,baseRefName,mergedAt`) cho các PR ghi trong `STATE.md` — **KHÔNG tin giá trị ghi sẵn trong `STATE.md`**;
+  - (b) với MỖI việc `STATE.md` khai là "đã có trên main", grep cây `main` thật để xác nhận nội dung thực sự nằm trên `main` (ví dụ `git show origin/main:<file> | grep '<chuỗi đặc trưng>'` sau khi `git fetch origin main`);
+  - (c) bất kỳ chỗ nào lệch => ghi `MAIN_CONTENT_CHECK=FAIL` + `STATE_TRUST=DRIFT` (§3), báo rõ chỗ lệch, **KHÔNG tự sửa** khi chưa được giao.
+  - Lý do tồn tại (FACT 2026-10-27): PR #5 `MERGED` nhưng base là nhánh của #4 nên nội dung không vào `main`, trong khi trạng thái ghi sẵn khiến phiên sau tưởng đã xong — chỉ có cây `main` là sự thật (`PROTOCOL/arena-agent-mode.md` §4.1 `BASE_PHAI_LA_MAIN`).
 
 ## 3. Đối chiếu độ tin cậy trạng thái (`STATE_TRUST`)
 

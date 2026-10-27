@@ -24,3 +24,8 @@ cuối, KHÔNG sửa / xóa / sắp xếp lại dòng đã lưu. Mỗi dòng ghi
 - [đẩy 2026-10-27] 2026-10-26 — Khởi tạo khung luật và giao thức GIAIDAP V1 — commit 612a8e6 (PR #1)
 - [đẩy 2026-10-27] 2026-10-26 — Vai B kiểm độc lập PR #1 tại head 84ae8b3, ra verdict PASS_WITH_FIXES — RUNS/0000-pr1-verify/B.md (commit 84ae8b3)
 - [đẩy 2026-10-27] 2026-10-26 — Vá lần 5: áp sửa theo báo cáo B (thêm LUẬT 15, bắt buộc SHA thật cho LAW_CHECK, map V2) — commit db14795 (PR #1)
+- [ghi 2026-10-27] ngày 2026-10-27 — bản ghi sự cố PR #5 (4 dòng liền nhau, cũ→mới)
+- [ghi 2026-10-27] #5 merge vào nhánh #4 nên không vào main
+- [ghi 2026-10-27] nguyên nhân: base là nhánh, không phải main
+- [ghi 2026-10-27] luật chống: BASE_PHAI_LA_MAIN (PROTOCOL/arena-agent-mode.md §4.1) + MAIN_CONTENT_CHECK (PROTOCOL/resume-protocol.md §2)
+- [đẩy 2026-10-27] 2026-10-26 — Vá lần 6: lưu nguyên văn B.md, sửa LUẬT 12 theo D1, nâng map lên V3 — commit b1ba697 (PR #1)

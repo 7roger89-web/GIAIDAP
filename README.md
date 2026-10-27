@@ -14,7 +14,7 @@ Bộ nhớ chung + sổ luật cho quy trình nhiều AI.
 | `STATE.md` | Điểm hồi sinh cho phiên mới: đang ở đâu, hash chuẩn, việc kế tiếp | `STATE.md` |
 | `LAW/` | Luật tối thượng, duy nhất + bảng ánh xạ nguồn | `LAW/00-SUPREME-LAW.md` |
 | `PROTOCOL/` | Cách vận hành: hồi sinh, Arena, vòng A/B/C, handoff | `PROTOCOL/*.md` |
-| `REGISTER/` | Sổ phương án đã bị bác — chống tái tranh luận | `REGISTER/BAC.md` |
+| `REGISTER/` | Sổ phương án đã bị bác — chống tái tranh luận + lịch sử dài hạn (append-only) | `REGISTER/BAC.md`, `REGISTER/LICH-SU.md` |
 | `KB/` | Tri thức lĩnh vực tra theo từ khóa + khuôn mẫu | `KB/INDEX.md` |
 | `RUNS/` | Mục lục + nhật ký từng phiên chạy | `RUNS/INDEX.md` |
 | `scope-reality-check/` | Chế độ suy nghĩ kiểm định thực tế gắn theo vai (không thay luật) | `scope-reality-check/SKILL.md` |
@@ -51,6 +51,7 @@ PROTOCOL/handoff-packet.md
 PROTOCOL/multi-brain-loop.md
 PROTOCOL/resume-protocol.md
 REGISTER/BAC.md
+REGISTER/LICH-SU.md
 KB/INDEX.md
 KB/_TEMPLATE.md
 RUNS/README.md

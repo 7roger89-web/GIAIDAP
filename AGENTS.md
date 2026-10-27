@@ -4,11 +4,14 @@ TRẠNG THÁI: ACTIVE | NGÀY: 2026-10-27
 
 Đây là cửa vào duy nhất. Đọc file này trước, sau đó đọc theo thứ tự **BẮT BUỘC** (cold-start theo `PROTOCOL/resume-protocol.md` §1; phân tầng tiết kiệm ngữ cảnh xem §8 file đó):
 
-1. `STATE.md`
-2. `LAW/00-SUPREME-LAW.md`
-3. `PROTOCOL/resume-protocol.md` và `PROTOCOL/multi-brain-loop.md`
-4. `RUNS/INDEX.md`
-5. `KB/INDEX.md`
+1. `AGENTS.md`
+2. `STATE.md`
+3. `LAW/00-SUPREME-LAW.md`
+4. `PROTOCOL/resume-protocol.md` và `PROTOCOL/multi-brain-loop.md`
+5. `RUNS/INDEX.md`
+6. `KB/INDEX.md`
+
+> **Bất biến:** thứ tự đọc ở `AGENTS.md` (đoạn này + §0) và `PROTOCOL/resume-protocol.md §1` — **hai chỗ phải mô tả cùng một thứ tự**; sửa một bên thì phải sửa bên kia trong cùng commit.
 
 Trước khi đề xuất phương án mới, bắt buộc đọc `REGISTER/BAC.md`.
 Chế độ suy nghĩ gắn kèm: `scope-reality-check/SKILL.md` (chi tiết binding tại `PROTOCOL/multi-brain-loop.md` §11). Skill KHÔNG thay luật.
@@ -23,7 +26,7 @@ Mọi phiên vào repo phải định vị trạng thái trước khi làm việ
 2. Ngay sau `LAW_CHECK`, kiểm tra quan hệ tổ tiên `SINH_TỪ_HEAD`, đối chiếu `sha256sum` thật và kiểm `STATE_TRUST=OK|DRIFT`, rồi phát biên lai `RESUME_CHECK` (hai dòng dưới là **TEMPLATE**):
 
 ```text
-RESUME_CHECK=PASS | STATE_HEAD=<sha> | READ_HEAD=<sha> | LAW_HASH_MATCH=<YES|NO> | PROTOCOL_HASH_MATCH=<YES|NO> | SKILL_HASH_MATCH=<YES|NO> | OPEN=<...> | NEXT=<...>
+RESUME_CHECK=PASS | STATE_HEAD=<sha> | READ_HEAD=<sha> | LAW_HASH_MATCH=<YES|NO> | PROTOCOL_HASH_MATCH=<YES|NO> | SKILL_HASH_MATCH=<YES|NO> | POST_MERGE_RECONCILE=<NEEDED|DONE> | OPEN=<...> | NEXT=<...>
 ```
 
 ```text

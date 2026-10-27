@@ -154,7 +154,8 @@ Cách hiểu của GIAIDAP (không phải định nghĩa chính thức của Are
 
 ## 9. Checklist trước khi mở phiên
 
-- [ ] Đã đọc `LAW/00-SUPREME-LAW.md` và phát `LAW_CHECK`.
+- [ ] Đã đọc `LAW/00-SUPREME-LAW.md` và phát `LAW_CHECK` (SHA-256 thật).
+- [ ] Đã đọc `STATE.md` và phát `RESUME_CHECK`: so `sha256sum` thật (`LAW_HASH_MATCH`, `PROTOCOL_HASH_MATCH`, `SKILL_HASH_MATCH`), kiểm `STATE_TRUST=OK|DRIFT`, và xử lý `POST_MERGE_RECONCILE` nếu là phiên đầu sau merge (`PROTOCOL/resume-protocol.md §13`).
 - [ ] Task bounded; một nhánh; một PR.
 - [ ] Nguồn cho mọi dữ kiện dễ cũ có ngày kiểm.
 - [ ] `UNKNOWN` được liệt kê, không bị giấu.

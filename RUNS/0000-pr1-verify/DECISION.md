@@ -2,10 +2,26 @@ RUN_ID: 0000-pr1-verify
 STATUS: OPEN
 DATE: 2026-10-26
 LOẠI RUN: KIỂM LUẬT ĐỘC LẬP (không phải vòng A/B/C)
-REVIEWED_HEAD: 84ae8b3dfd8271d11af40c49fb34715634af1d0f (head B đã kiểm). Vá lần 5: `db14795`; vá lần 6: `b1ba697`; vá lần 7: commit mới nhất của nhánh.
+GHI CHÚ LOẠI RUN: Đây là run KIỂM LUẬT cho PR #1, không phải vòng A/B/C thường (do đó không có A.md và C.md).
+QUESTION_REF: RUNS/0000-pr1-verify/QUESTION.md
+A_REF: NONE (run KIỂM LUẬT, không phải vòng A/B/C)
+B_REF: RUNS/0000-pr1-verify/B.md
+C_REF: NONE (run KIỂM LUẬT, không phải vòng A/B/C)
+C_VERDICT: NOT_APPLICABLE (không có vai C; verdict gần nhất của B tại head 84ae8b3 là PASS_WITH_FIXES; diff 84ae8b3..HEAD chưa qua B kiểm lại)
+CONFIDENCE: UNKNOWN (bản V4 sau vá lần 5–7 chưa có kiểm chứng độc lập của B)
+OWNER_DECISION: PENDING (Owner đã quyết Q1–Q3 và D1–D5 để vá tới V4 — bản chép OWNER_SAID=PARAPHRASE; chưa gỡ PENDING_VERIFICATION)
+SESSION_REF: arena/b960bf99-giaidap (bổ sung trường template; tạo gốc tại arena/609eab3c-giaidap)
+PR_HEAD_SHA: d9074354bc735241c5faf03bc06efd24b72117f1 (HEAD lúc ghi bổ sung khuôn template)
+REVIEWED_HEAD: 84ae8b3dfd8271d11af40c49fb34715634af1d0f (head B đã kiểm). Vá lần 5: `db14795`; vá lần 6: `b1ba697`; vá lần 7: `9c4b63a`.
 CONTAMINATED=YES
 NGUỒN QUYẾT ĐỊNH: Owner quyết Q1/Q2/Q3 (vá lần 5), D1/D2/D3 (vá lần 6), D4/D5 (vá lần 7).
 B_REPORT: `B.md` trong folder này — `CONTENT_STATUS=VERBATIM_RECEIVED`. Hash tách **2 field riêng** (D5): `CONTENT_SHA256_B_DECLARED=UNKNOWN` (B không tự khai) và `CONTENT_SHA256_WRITER_COMPUTED=a2d19c536f6b8a7eb9a26e462b75881367e4ff71f52f353b2aa16534edf79e57` (Writer tự băm).
+SOURCES:
+- LAW/00-SUPREME-LAW.md (kiểm ngày 2026-10-27)
+- LAW/00-PROVENANCE-MAP.md (bản V4, kiểm ngày 2026-10-27)
+- RUNS/0000-pr1-verify/B.md (nguyên văn báo cáo B ngày 2026-10-26 cho head 84ae8b3dfd8271d11af40c49fb34715634af1d0f)
+- https://github.com/7roger89-web/GIAIDAP/pull/1 (merged 2026-10-26)
+- 7roger89-web/P2P-upgrade-github-1@main:docs/p2p-development/P2P-OPERATIONS-NOTEBOOK.md (blob f3edbac375d4e1540011f0c12081938d05a77b4f, kiểm ngày 2026-10-26 trong B.md)
 
 ## 0. Phạm vi và cảnh báo
 

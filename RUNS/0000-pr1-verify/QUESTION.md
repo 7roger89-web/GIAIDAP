@@ -1,0 +1,1 @@
+Kiểm chứng độc lập LAW/00-SUPREME-LAW.md và bảng ánh xạ LAW/00-PROVENANCE-MAP.md trên PR #1 so với nguồn thượng nguồn 7roger89-web/P2P-upgrade-github-1@main:docs/p2p-development/P2P-OPERATIONS-NOTEBOOK.md (số dòng, phân loại VERBATIM/DERIVED/NEW, phần tự chế chưa khai, ranh giới vai B và mẫu biên lai LAW_CHECK).

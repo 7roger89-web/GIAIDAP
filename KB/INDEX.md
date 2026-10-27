@@ -37,4 +37,5 @@ Bảng tra theo từ khóa. Khớp thì dùng, không khớp thì tạo RUN mớ
 ## Ghi chú
 
 - Dòng ví dụ `nhập khẩu, bình nóng lạnh, trung quốc` là **TODO**, chưa phải tri thức đã kiểm.
+- Khuôn chuẩn khi tạo file mục KB mới: xem `KB/_TEMPLATE.md` (khớp 6 cột trên, tách nhãn `FACT`/`INFERENCE`/`UNKNOWN`, bắt buộc có mục "Sẽ được tra lại khi nào").
 - Khi thêm dòng thật, giữ đúng 6 cột và ghi nguồn cụ thể.

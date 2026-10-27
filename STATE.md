@@ -34,16 +34,16 @@ PR_STATE: #4 MERGED 2026-10-27 (main @ 03639d4; mergedAt 06:36:32Z)
 PR_STATE: #5 MERGED 2026-10-27 (base arena/b960bf99-giaidap — KHÔNG vào main; nội dung đưa lên main bởi PR reconcile #7)
 PR_STATE: #6 MERGED 2026-10-27 (main @ 60d6cc0; mergedAt 06:37:18Z — merge sau #4)
 PR_STATE: #7 OPEN 2026-10-27 (reconcile: arena/ea8a6620-giaidap → main; base=main, MERGEABLE; B1–B8 đối chiếu chống mất nội dung đã dán vào mô tả; chờ Owner)
-PR_STATE: #PENDING OPEN 2026-10-27 (L1–L4: arena/953af346-giaidap → main; STACK chứa trọn #7 + L1–L4 — số PR thật điền ở commit nối tiếp ngay sau khi mở PR, commit đó CHỈ sửa STATE.md, không đụng file có hash; xem LỊCH SỬ)
+PR_STATE: #8 OPEN 2026-10-27 (L1–L4: arena/953af346-giaidap → main; base=main; STACK chứa trọn #7 + L1–L4; số điền bởi commit nối tiếp chỉ-sửa-STATE.md ngay sau khi mở PR — hash 9/9 không đổi)
 ```
 
 ## VIỆC ĐANG MỞ
 - 0000-pr1-verify — OPEN (verdict gần nhất của B cho head 84ae8b3: PASS_WITH_FIXES; bản V4 chưa kiểm lại) — Giao vai B ở phiên mới kiểm lại diff 84ae8b3..HEAD (LUẬT 12, LUẬT 08, map V4, KB/INDEX.md §MỞ RỘNG, cặp hash B.md)
 - PR #7 (arena/ea8a6620-giaidap → main) — OPEN, chờ Owner review; Writer không tự merge.
-- PR mới từ arena/953af346-giaidap → main (L1–L4; STACK: chứa trọn nội dung #7) — OPEN, chờ Owner review; Writer không tự merge.
+- PR #8 (arena/953af346-giaidap → main; L1–L4; STACK: chứa trọn nội dung #7) — OPEN, chờ Owner review; Writer không tự merge.
 
 ## NEXT_ONE_ACTION
-Owner review và quyết định merge theo MỘT trong hai đường an toàn (luật BASE_PHAI_LA_MAIN, arena-agent-mode.md §4.1): (1) merge PR L1–L4 (chứa trọn #7) rồi đóng #7; hoặc (2) merge #7 trước rồi merge PR L1–L4 ngay sau. Sau khi merge: phiên đầu tiên đổi `POST_MERGE_RECONCILE=NEEDED` và chạy `PROTOCOL/resume-protocol.md` §13 + `MAIN_CONTENT_CHECK` TRƯỚC; rồi mới giao vai B (phiên mới, EVIDENCE_MODE=SEALED) kiểm lại diff 84ae8b3..HEAD trước khi xét gỡ PENDING_VERIFICATION.
+Owner review và quyết định merge theo MỘT trong hai đường an toàn (luật BASE_PHAI_LA_MAIN, arena-agent-mode.md §4.1): (1) merge PR #8 (chứa trọn #7) rồi đóng #7; hoặc (2) merge #7 trước rồi merge PR #8 ngay sau. Sau khi merge: phiên đầu tiên đổi `POST_MERGE_RECONCILE=NEEDED` và chạy `PROTOCOL/resume-protocol.md` §13 + `MAIN_CONTENT_CHECK` TRƯỚC; rồi mới giao vai B (phiên mới, EVIDENCE_MODE=SEALED) kiểm lại diff 84ae8b3..HEAD trước khi xét gỡ PENDING_VERIFICATION.
 
 ## BLOCKER & UNKNOWN
 - BLOCKER: Chưa được gỡ PROVENANCE_STATUS=PENDING_VERIFICATION vì vai B chưa kiểm độc lập bản map V4 sau vá lần 5–7 (kiểm ngày 2026-10-27).

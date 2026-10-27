@@ -4,12 +4,15 @@ TRẠNG THÁI: ACTIVE | NGÀY: 2026-10-27
 
 Đây là cửa vào duy nhất. Đọc file này trước, sau đó đọc theo thứ tự **BẮT BUỘC** (cold-start theo `PROTOCOL/resume-protocol.md` §1; phân tầng tiết kiệm ngữ cảnh xem §8 file đó):
 
-1. `STATE.md`
-2. `LAW/00-SUPREME-LAW.md`
-3. `PROTOCOL/resume-protocol.md` và `PROTOCOL/multi-brain-loop.md`
-4. `PROTOCOL/cach-nghi.md`
-5. `RUNS/INDEX.md`
-6. `KB/INDEX.md`
+1. `AGENTS.md`
+2. `STATE.md`
+3. `LAW/00-SUPREME-LAW.md`
+4. `PROTOCOL/resume-protocol.md` và `PROTOCOL/multi-brain-loop.md`
+5. `PROTOCOL/cach-nghi.md`
+6. `RUNS/INDEX.md`
+7. `KB/INDEX.md`
+
+> **Bất biến:** thứ tự đọc ở `AGENTS.md` (đoạn này + §0) và `PROTOCOL/resume-protocol.md §1` — **hai chỗ phải mô tả cùng một thứ tự**; sửa một bên thì phải sửa bên kia trong cùng commit.
 
 Trước khi đề xuất phương án mới, bắt buộc đọc `REGISTER/BAC.md`.
 Chế độ suy nghĩ gắn kèm: `scope-reality-check/SKILL.md` (chi tiết binding tại `PROTOCOL/multi-brain-loop.md` §11). Skill KHÔNG thay luật.
@@ -24,7 +27,7 @@ Mọi phiên vào repo phải định vị trạng thái trước khi làm việ
 2. Ngay sau `LAW_CHECK`, kiểm tra quan hệ tổ tiên `SINH_TỪ_HEAD`, đối chiếu `sha256sum` thật và kiểm `STATE_TRUST=OK|DRIFT`, rồi phát biên lai `RESUME_CHECK` (hai dòng dưới là **TEMPLATE**):
 
 ```text
-RESUME_CHECK=PASS | STATE_HEAD=<sha> | READ_HEAD=<sha> | LAW_HASH_MATCH=<YES|NO> | PROTOCOL_HASH_MATCH=<YES|NO> | SKILL_HASH_MATCH=<YES|NO> | OPEN=<...> | NEXT=<...>
+RESUME_CHECK=PASS | STATE_HEAD=<sha> | READ_HEAD=<sha> | LAW_HASH_MATCH=<YES|NO> | PROTOCOL_HASH_MATCH=<YES|NO> | SKILL_HASH_MATCH=<YES|NO> | POST_MERGE_RECONCILE=<NEEDED|DONE> | OPEN=<...> | NEXT=<...>
 ```
 
 ```text
@@ -77,7 +80,7 @@ Không trộn nhãn. Không nâng `INFERENCE` thành `FACT`. Không bịa nguồ
 ## 4. Khi nhận một task
 
 1. Phát `LAW_CHECK` rồi `RESUME_CHECK`.
-2. Phát `RESTATE` (diễn giải lại việc bằng lời của mình) trước khi làm; lệch packet => `RESTATE_MISMATCH=YES` và dừng (`PROTOCOL/cach-nghi.md` §1).
+2. Phát `RESTATE` trước khi làm (định nghĩa và quy tắc lệch packet tại `PROTOCOL/cach-nghi.md` §1).
 3. Khai `CÁCH CHỨNG MINH` trước khi làm: lệnh thật + kỳ vọng máy đọc được + artifact + phương án dự phòng (`PROTOCOL/kiem.md` §1).
 4. Gặp MÙI (a–d tại `PROTOCOL/kiem.md` §4): ghi `MUI=<a|b|c|d>` vào output, báo Owner, không tự sửa ngoài phạm vi.
 5. Xác định vai: A / B / C / R — Resumer / tay chân / Writer.

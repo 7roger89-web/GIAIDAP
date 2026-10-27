@@ -1,14 +1,13 @@
 # PROTOCOL/cach-nghi.md — Cách nghĩ trước khi làm
 
 TRẠNG THÁI: ACTIVE | NGÀY: 2026-10-27
-SESSION_REF: arena/05b33e63-giaidap
-PR_HEAD_SHA: 7563b9c1826c13998f0b74a13f931c7460724408
+SESSION_REF: arena/ea8a6620-giaidap
+PR_HEAD_SHA: 60d6cc0cccb0f1c21010c89b66d1c208390f12cd
 
-> Ghi chú thực tế (2026-10-27): `REGISTER/LICH-SU.md` do PR #5 thêm nhưng CHƯA merge vào nhánh này. Khi file chưa có, dùng `STATE.md §LỊCH SỬ GẦN NHẤT` + `git log` thay thế; sau khi PR #5 merge thì đọc đúng đường dẫn chính danh.
 
 1. **RESTATE** — Trước khi làm bất cứ gì, diễn giải lại việc BẰNG LỜI CỦA MÌNH: mục tiêu, đầu vào, đầu ra, điều kiện dừng. Lệch với packet => `RESTATE_MISMATCH=YES` và DỪNG, hỏi lại thay vì làm bừa. Đây là van chống trôi rẻ nhất.
 2. **HOW** — Lần theo cơ chế bằng FILE THẬT trong repo, không đọc tóm tắt thay. Mỗi claim phải nêu được `file + dòng`; không trỏ được dòng thì ghi `UNKNOWN`, không đoán.
-3. **WHY** — Trước khi đề xuất, tra `REGISTER/BAC.md`, `REGISTER/LICH-SU.md` (xem ghi chú đầu file), `DECISION.md` của RUN liên quan và `git log`. Không đề xuất lại cái đã bị bác; đề xuất lại cần bằng chứng mới + nhãn `OWNER_CONFIRMATION_REQUIRED`.
+3. **WHY** — Trước khi đề xuất, tra `REGISTER/BAC.md`, `REGISTER/LICH-SU.md`, `DECISION.md` của RUN liên quan và `git log`. Không đề xuất lại cái đã bị bác; đề xuất lại cần bằng chứng mới + nhãn `OWNER_CONFIRMATION_REQUIRED`.
 4. **TEACH** — Trước khi làm, nói rõ ba thứ: SẼ LÀM GÌ · ĐÁNH ĐỔI gì (chi phí, rủi ro, cái bị cắt) · SẼ KHÔNG LÀM GÌ (ranh giới phạm vi).
 5. **RECALL** — Trước khi hỏi Owner, tra `RUNS/INDEX.md` + `KB/INDEX.md` + `LICH-SU.md`/`git log`. Repo đã trả lời thì không hỏi lại (`PROTOCOL/resume-protocol.md` §6).
 6. **REFERENCE** — Owner đưa mẫu (link/file/ví dụ) thì bám cấu trúc của mẫu và GỌI TÊN pattern đang dùng, để người kiểm đối chiếu được gốc.

@@ -11,10 +11,12 @@ Phiên mới vào repo đọc theo thứ tự:
 1. `AGENTS.md`
 2. `STATE.md`
 3. `LAW/00-SUPREME-LAW.md`
-4. `PROTOCOL/resume-protocol.md` (file này) và `PROTOCOL/multi-brain-loop.md`
+4. `PROTOCOL/resume-protocol.md` và `PROTOCOL/multi-brain-loop.md`
 5. `PROTOCOL/cach-nghi.md`
 6. `RUNS/INDEX.md`
 7. `KB/INDEX.md`
+
+> **Bất biến:** thứ tự đọc ở `AGENTS.md` (đoạn mở đầu) và `PROTOCOL/resume-protocol.md §1` — **hai chỗ phải mô tả cùng một thứ tự**; sửa một bên thì phải sửa bên kia trong cùng commit. Nếu lệch, phiên mới đọc sai ngay từ bước 1.
 
 Quy tắc định vị:
 
@@ -27,12 +29,12 @@ Quy tắc định vị:
 
 Ngay sau dòng `LAW_CHECK`, mọi phiên tiếp việc phải phát biên lai `RESUME_CHECK`.
 
-- Nếu packet của việc có trường `RESTATE` (mọi packet theo `PROTOCOL/handoff-packet.md` bản 10 trường đều có), phát `RESTATE` **trước cả `LAW_CHECK`**; thứ tự output là `RESTATE` → `LAW_CHECK` → `RESUME_CHECK`. Diễn giải lệch packet => `RESTATE_MISMATCH=YES`, dừng việc thật (chi tiết tại `PROTOCOL/cach-nghi.md` §1).
+- Nếu packet của việc có trường `RESTATE` (mọi packet theo `PROTOCOL/handoff-packet.md` bản 10 trường đều có), phát `RESTATE` **trước cả `LAW_CHECK`**; thứ tự output là `RESTATE` → `LAW_CHECK` → `RESUME_CHECK`. Quy tắc lệch packet: `PROTOCOL/cach-nghi.md` §1.
 
 Hai khối dưới đây là **TEMPLATE**, không phải biên lai thật:
 
 ```text
-RESUME_CHECK=PASS | STATE_HEAD=<sha> | READ_HEAD=<sha> | LAW_HASH_MATCH=<YES|NO> | PROTOCOL_HASH_MATCH=<YES|NO> | SKILL_HASH_MATCH=<YES|NO> | OPEN=<...> | NEXT=<...>
+RESUME_CHECK=PASS | STATE_HEAD=<sha> | READ_HEAD=<sha> | LAW_HASH_MATCH=<YES|NO> | PROTOCOL_HASH_MATCH=<YES|NO> | SKILL_HASH_MATCH=<YES|NO> | POST_MERGE_RECONCILE=<NEEDED|DONE> | OPEN=<...> | NEXT=<...>
 ```
 
 ```text
@@ -48,6 +50,7 @@ Quy tắc kiểm hash:
   - `scope-reality-check/SKILL.md` → so với `SKILL_HASH` trong `STATE.md` (`SKILL_HASH_MATCH=YES|NO`).
 - **Hash khớp (`YES`)**: trong cùng phiên không cần đọc lại file đã đọc; trong phiên mới (`NEW_CHAT`), chỉ đọc đúng các file thuộc bộ đọc của vai hiện tại (§8).
 - **Hash lệch (`NO`)**: file đó đã đổi so với lúc ghi `STATE.md` => **bắt buộc đọc lại toàn bộ đúng file bị lệch** trước khi làm việc, đồng thời kiểm `STATE_TRUST` (§3).
+- **`POST_MERGE_RECONCILE=NEEDED|DONE`**: `NEEDED` = đây là phiên ĐẦU TIÊN sau một merge mà `STATE.md` chưa được đối chiếu với `main` thật; `DONE` = đã đối chiếu xong (xem §13). Khi `NEEDED`, phải chạy §13 TRƯỚC mọi việc bounded khác.
 
 ## 3. Đối chiếu độ tin cậy trạng thái (`STATE_TRUST`)
 
@@ -72,6 +75,8 @@ Quy ước kỹ thuật bắt buộc:
 
 - Sau mỗi đơn vị việc bounded làm thay đổi trạng thái công việc, mở/đóng `RUN`, đổi `NEXT_ONE_ACTION`, có quyết định mới của Owner, hoặc sửa `LAW/` · `PROTOCOL/` · `scope-reality-check/SKILL.md`: người làm **bắt buộc cập nhật `STATE.md` + `RUNS/INDEX.md` (và `REGISTER/BAC.md` nếu có phương án bị bác) TRONG CÙNG COMMIT**.
 - Không cập nhật => phần việc đó coi như **không tồn tại** đối với model phiên sau (hoặc gây `STATE_TRUST=DRIFT`).
+- **`STATE.md` là file ghi CUỐI CÙNG của phiên.** Sau khi ghi `STATE.md`, nếu còn sửa file khác (đặc biệt `LAW/` · `PROTOCOL/` · `scope-reality-check/SKILL.md`) thì **PHẢI tính lại và cập nhật lại MỌI hash** trong `STATE.md` (`LAW_SHA256`, 4 dòng `PROTOCOL_HASHES`, `SKILL_HASH`) bằng `sha256sum` của bản SAU khi sửa. Lý do: hash cũ sẽ lệch, phiên sau phát `*_HASH_MATCH=NO` và nghi ngờ oan (tự mục). Ghi `STATE.md` cuối cùng là cách đơn giản nhất để 6 hash luôn khớp (LUẬT 05).
+- **LỊCH SỬ GẦN NHẤT có trần 8 dòng — đẩy xuống `REGISTER/LICH-SU.md` (append-only), KHÔNG xóa.** Khi `STATE.md > LỊCH SỬ GẦN NHẤT` đã có 8 dòng mà cần ghi thêm 1 dòng mới: đẩy đúng **1 dòng CŨ NHẤT** (cuối danh sách) xuống `REGISTER/LICH-SU.md` — ghi thêm một dòng `- [đẩy <ngày>] <nguyên văn dòng cũ>` vào CUỐI file đó, rồi mới thêm dòng mới lên ĐẦU `STATE.md`. `REGISTER/LICH-SU.md` là sổ dài hạn append-only: không sửa, không xóa, không sắp xếp lại dòng đã lưu; `STATE.md` vẫn chỉ giữ 8 dòng gần nhất.
 - Ghi nhận trung thực: cổng kết phiên này là **kỷ luật tự nguyện bằng giấy tờ** — repo không có CI/hook cưỡng chế (LUẬT 05).
 
 ## 6. Kỷ luật chống trôi
@@ -133,10 +138,22 @@ LAW/00-SUPREME-LAW.md > PROTOCOL/*.md > STATE.md > RUNS/* > KB/*
 ## 12. CÂU LỆNH PHIÊN MỚI
 
 ```text
-Đọc repo https://github.com/7roger89-web/GIAIDAP theo thứ tự trong AGENTS.md, phát RESTATE (nếu packet có trường này) rồi LAW_CHECK rồi RESUME_CHECK, đọc REGISTER/BAC.md, dùng skill scope-reality-check đúng vai, rồi báo: việc đang mở, NEXT_ONE_ACTION, BLOCKER, UNKNOWN. Không đoán, không hỏi lại nếu repo đã trả lời được.
+Đọc repo https://github.com/7roger89-web/GIAIDAP theo thứ tự trong AGENTS.md, phát RESTATE (nếu packet có trường này) rồi LAW_CHECK rồi RESUME_CHECK, đọc REGISTER/BAC.md, rồi đọc FILE skill tại đường dẫn scope-reality-check/SKILL.md NHƯ MỘT FILE (tự mở path scope-reality-check/SKILL.md ra mà đọc — đừng chờ auto-load, skill KHÔNG tự nạp), dùng skill đúng vai, rồi báo: việc đang mở, NEXT_ONE_ACTION, BLOCKER, UNKNOWN. Không đoán, không hỏi lại nếu repo đã trả lời được.
 ```
 
-## 13. Nhịp `MAINTAIN` (trỏ về `PROTOCOL/kiem.md` §5)
+## 13. POST_MERGE_RECONCILE (phiên đầu tiên sau một merge)
+
+**Quy tắc (bắt buộc):** Phiên ĐẦU TIÊN sau một merge phải: (1) đối chiếu `STATE.md` với thực tế `main`, (2) sửa `STATE.md` TRƯỚC khi làm việc khác, (3) ghi PR đã merge vào `LỊCH SỬ`.
+
+Cách làm, theo đúng thứ tự:
+
+1. `RESUME_CHECK` phát `POST_MERGE_RECONCILE=NEEDED` (§2) khi `STATE.md` còn giữ trạng thái PR/HEAD/hash của **trước** merge. Đối chiếu với `main` thật bằng `gh pr list` / `git log main` / `sha256sum`; chỗ nào lệch thì ghi rõ (`STATE_TRUST=DRIFT`, §3).
+2. **Sửa `STATE.md` TRƯỚC**: cập nhật `PR_STATE` (PR vừa merge -> `MERGED` + ngày), `SINH_TỪ_HEAD` / `LAW_SHA256` / `PROTOCOL_HASHES` / `SKILL_HASH` nếu đổi, `VIỆC ĐANG MỞ`, `NEXT_ONE_ACTION`. Chưa làm việc bounded nào khác cho tới khi xong bước này; nếu sửa file khác sau khi ghi `STATE.md` thì áp §5 (tính lại mọi hash).
+3. Ghi PR đã merge vào `LỊCH SỬ GẦN NHẤT`; đầy 8 dòng thì đẩy dòng cũ nhất xuống `REGISTER/LICH-SU.md` (§5). Rồi đổi `POST_MERGE_RECONCILE=DONE`.
+
+Lý do tồn tại mục này: `STATE.md` nằm trên NHÁNH của từng phiên; trước khi merge, `main` chứa trạng thái CŨ. Nếu phiên đầu sau merge đọc `STATE.md` cũ rồi làm việc luôn, nó sẽ định vị sai (tự mục). Phiên đầu phải là phiên **SỬA `STATE.md`**, không phải phiên làm việc mới. Mục này KHÔNG phải cơ chế `claim/lock` (vẫn còn là `UNKNOWN` ở `STATE.md`).
+
+## 14. Nhịp `MAINTAIN` (trỏ về `PROTOCOL/kiem.md` §5)
 
 Khi cấu trúc repo đổi (thêm/xóa file, đổi luật, đổi `PROTOCOL/`) hoặc mỗi 10 phiên (đếm theo `SESSION_REF` trong `STATE.md`), bắt buộc chạy `MAINTAIN` theo đúng 3 bước tại `PROTOCOL/kiem.md` §5:
 

@@ -25,3 +25,13 @@ Bảng tra cứu toàn bộ các `RUN` trong `RUNS/`. Dùng đúng khuôn 6 cộ
 2. **Đổi trạng thái khi RUN đóng**: khi `DECISION.md` chuyển sang `STATUS: CLOSED` => cập nhật cột `TRẠNG THÁI` thành `CLOSED` và ghi cột `KẾT LUẬN (1 dòng)`.
 3. **Không xóa**: không xóa dòng của RUN cũ, kể cả khi RUN bị `CONTAMINATED=YES` hoặc dừng ở `VERDICT=UNKNOWN`.
 4. **Đồng bộ trong cùng commit**: mọi cập nhật `RUNS/INDEX.md` làm đổi việc đang mở phải đi kèm cập nhật `STATE.md` **trong cùng commit** (xem `PROTOCOL/resume-protocol.md` §5).
+
+## Nhật ký bảo trì giao thức (vá tài liệu — KHÔNG mở RUN mới)
+
+Bản vá có thể là vá giao thức/điểm hồi sinh (không phải một câu hỏi A/B/C). Khi đó KHÔNG mở
+`RUNS/<id>/` mới và KHÔNG tạo `DECISION.md` mới; thay vào đó ghi 1 dòng vào nhật ký này trong
+CÙNG COMMIT với `STATE.md` + `REGISTER` (`PROTOCOL/resume-protocol.md §5`). Bảng RUN ở trên chỉ
+liệt kê các RUN thật sự (vòng A/B/C hoặc kiểm luật độc lập).
+
+- 2026-10-27 — Vá 4 lỗ tự mục của cơ chế hồi sinh (A1–A4 chống tự mục, B1–B3 khớp lệnh, C1–C3 dùng được ngay, D1–D3 seed) — PR nối tiếp PR #4, base = nhánh `arena/b960bf99-giaidap`, head = `arena/81c32a7d-giaidap`; file mới duy nhất `REGISTER/LICH-SU.md`. RUN `0000-pr1-verify` vẫn `OPEN`, `NEXT_ONE_ACTION` không đổi. Chi tiết: `STATE.md > LỊCH SỬ GẦN NHẤT`.
+- 2026-10-27 — Reconcile PR #6 lên main sau khi #4 và #5 đã merge — PR MỚI từ nhánh `arena/ea8a6620-giaidap` (#6 đã MERGED vào main lúc 06:37:18Z, sau #4 (06:36:32Z), nên không cập nhật được; #5 MERGED 06:36:46Z nhưng có base là nhánh `arena/b960bf99-giaidap` nên nội dung của #5 chưa vào main — PR này đưa lên). Hợp nhất 5 file xung đột; `resume-protocol` §13 POST_MERGE_RECONCILE, §14 MAINTAIN; RESTATE một nguồn (`cach-nghi.md` §1); lệnh hash một dòng trong `kiem.md` §5. RUN `0000-pr1-verify` vẫn `OPEN`, `NEXT_ONE_ACTION` không đổi. Chi tiết: `STATE.md > LỊCH SỬ GẦN NHẤT`.

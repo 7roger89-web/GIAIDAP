@@ -32,16 +32,23 @@ Bộ nhớ chung + sổ luật cho quy trình nhiều AI.
 ```text
 README.md
 AGENTS.md
+STATE.md
 LAW/00-SUPREME-LAW.md
 LAW/00-PROVENANCE-MAP.md
 PROTOCOL/arena-agent-mode.md
 PROTOCOL/multi-brain-loop.md
 PROTOCOL/handoff-packet.md
+PROTOCOL/resume-protocol.md
 KB/INDEX.md
 RUNS/README.md
+RUNS/INDEX.md
 RUNS/0000-pr1-verify/B.md
 RUNS/0000-pr1-verify/DECISION.md
 ```
+
+## Luồng hồi sinh
+
+Phiên mới → `AGENTS.md` → `STATE.md` → phát `LAW_CHECK` + `RESUME_CHECK` (theo `PROTOCOL/resume-protocol.md`) → tiếp việc theo `NEXT_ONE_ACTION` trong `STATE.md`. Nếu `RESUME_CHECK=BLOCKED` thì dừng.
 
 ## GIAIDAP không phải
 
@@ -49,4 +56,4 @@ RUNS/0000-pr1-verify/DECISION.md
 - Không phải nơi lưu transcript chat dài.
 - Không phải daemon, script hay CI phức tạp.
 
-TRẠNG THÁI: V1 + các vòng vá (mới nhất: vá lần 7) — 2026-10-26. `PROVENANCE_STATUS=PENDING_VERIFICATION`: bảng ánh xạ V4 chưa có kiểm độc lập cho bản này. Chưa có mục KB nội dung; `KB/INDEX.md` mới có dòng ví dụ.
+TRẠNG THÁI: V1 + các vòng vá (mới nhất: vá lần 7) + cơ chế hồi sinh — 2026-10-27. `PROVENANCE_STATUS=PENDING_VERIFICATION`: bảng ánh xạ V4 chưa có kiểm độc lập cho bản này. Chưa có mục KB nội dung; `KB/INDEX.md` mới có dòng ví dụ. Điểm hồi sinh: `STATE.md`.

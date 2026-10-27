@@ -24,6 +24,7 @@ RUNS/<4 số>-<slug>/
 
 - `A.md`, `B.md`, `C.md`: output của ba vai, theo `PROTOCOL/multi-brain-loop.md`.
 - Mọi file `B*.md` phải có **cả hai** field hash: `CONTENT_SHA256_B_DECLARED` (B tự khai; không khai ⇒ `UNKNOWN`) và `CONTENT_SHA256_WRITER_COMPUTED` (người ghi tự băm). Hai field khác nguồn, không thay thế nhau — chi tiết ở `PROTOCOL/multi-brain-loop.md` §4.
+- Mọi file output ghi thêm `SESSION_REF` (tên nhánh/PR) và `PR_HEAD_SHA` để truy vết phiên nào làm ra file (nhóm `TRƯỜNG MỞ RỘNG` ở `PROTOCOL/multi-brain-loop.md` §4).
 - `DECISION.md`: bản ghi kết luận, do Arena ghi từ `C.md` + quyết định của Owner.
 - `QUESTION.md` (tùy chọn, nên có): câu hỏi thô. Không dán kết luận của A/B/C vào đây.
 

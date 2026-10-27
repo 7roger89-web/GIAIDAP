@@ -10,6 +10,12 @@ TRẠNG THÁI: ACTIVE | NGÀY: 2026-10-26
 
 Không bỏ bước. Thiếu file hoặc không đọc được => `LAW_CHECK=BLOCKED`, không làm việc thật.
 
+Thứ tự đọc bắt buộc (đồng bộ với `PROTOCOL/resume-protocol.md`): `AGENTS.md` → `STATE.md` → `LAW/00-SUPREME-LAW.md` → `PROTOCOL/multi-brain-loop.md` → `RUNS/INDEX.md` → `KB/INDEX.md`.
+
+## 0. Hồi sinh (bắt buộc)
+
+Đọc `STATE.md` trước để biết đang ở đâu. Phát `RESUME_CHECK` ngay sau `LAW_CHECK`, trước khi làm việc thật, theo `PROTOCOL/resume-protocol.md`. Nếu `RESUME_CHECK=BLOCKED` thì dừng, không làm việc thật.
+
 ## 1. Biên lai đọc luật (bắt buộc)
 
 Mỗi vai phát biên lai **RIÊNG**, ngay đầu output. Hai khối dưới đây là **TEMPLATE**, không phải biên lai thật:

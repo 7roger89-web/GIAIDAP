@@ -54,7 +54,9 @@ Arena: ghi file vào `RUNS/`, chạy search khi được yêu cầu, mở PR; kh
 
 ## 4. Header chuẩn mỗi file
 
-Mọi file `A.md`, `B.md`, `C.md` mở đầu bằng đúng 6 trường, mỗi trường một dòng. Khối dưới đây là **TEMPLATE** cho `A.md` (không phải biên lai thật); `B.md` thêm `A.md`, `C.md` thêm `A.md` + `B.md` vào `INPUT_REF`:
+Mọi file `A.md`, `B.md`, `C.md` mở đầu bằng các trường dưới đây, mỗi trường một dòng, chia 2 nhóm: `TRƯỜNG BẮT BUỘC` (6 trường) và `TRƯỜNG MỞ RỘNG`. Khối dưới đây là **TEMPLATE** cho `A.md` (không phải biên lai thật); `B.md` thêm `A.md`, `C.md` thêm `A.md` + `B.md` vào `INPUT_REF`:
+
+### TRƯỜNG BẮT BUỘC (6)
 
 ```text
 RUN_ID: 0001-nhap-khau-binh-nong-lanh
@@ -71,6 +73,11 @@ LAW_CHECK: PASS | SOURCE=LAW/00-SUPREME-LAW.md | SOURCE_SHA256=<SHA256> | DATE=2
 - `DATE`: ngày viết file, `YYYY-MM-DD`.
 - `MODEL`: tên model nếu xác minh được; nếu không, `UNKNOWN`.
 - `LAW_CHECK`: `PASS | SOURCE=... | SOURCE_SHA256=... | DATE=...` hoặc `BLOCKED | REASON=...`.
+
+### TRƯỜNG MỞ RỘNG
+
+Ghi khi có, không thay 6 trường bắt buộc: `CONTAMINATED`, `MODEL`, `TOOL`, `REVIEWED_HEAD`, `SESSION_REF`, `PR_HEAD_SHA`, 2 hash (`CONTENT_SHA256_B_DECLARED`, `CONTENT_SHA256_WRITER_COMPUTED`), `CONTENT_STATUS`. Trong đó `SESSION_REF` là tên nhánh/PR của phiên và `PR_HEAD_SHA` là head của PR lúc ghi, để truy vết phiên nào làm ra file. Bản thật `RUNS/0000-pr1-verify/B.md` có 12 trường là ví dụ của nhóm mở rộng này.
+
 - **Riêng `B.md`** (và mọi file `B*.md`): bắt buộc thêm **2 trường hash tách riêng**, mỗi trường một dòng:
   - `CONTENT_SHA256_B_DECLARED=...`: giá trị B tự khai. B không khai ⇒ `UNKNOWN`; người ghi file **không** được điền thay.
   - `CONTENT_SHA256_WRITER_COMPUTED=...`: người ghi file tự băm.

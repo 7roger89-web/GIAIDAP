@@ -1,8 +1,8 @@
 # PROTOCOL/kiem.md — Lớp chứng minh: khai cách kiểm TRƯỚC khi làm
 
 TRẠNG THÁI: ACTIVE | NGÀY: 2026-10-27
-SESSION_REF: arena/05b33e63-giaidap
-PR_HEAD_SHA: 7563b9c1826c13998f0b74a13f931c7460724408
+SESSION_REF: arena/ea8a6620-giaidap
+PR_HEAD_SHA: 60d6cc0cccb0f1c21010c89b66d1c208390f12cd
 
 MỤC ĐÍCH: GIAIDAP đã có biên lai chứng minh việc **ĐỌC** (`LAW_CHECK`, `RESUME_CHECK`). File này bịt nốt lỗ còn lại: repo chưa có chỗ bắt khai **CÁCH CHỨNG MINH VIỆC LÀM**. File này là GIAO THỨC — bậc dưới `LAW/00` theo `PROTOCOL/resume-protocol.md` §9; nó **nối LUẬT 03 thành quy trình, không thay LUẬT 03**, và không tạo bản luật song song (LUẬT 13).
 
@@ -66,7 +66,13 @@ Gặp mùi: ghi `MUI=<a|b|c|d>` (nhiều mùi nối bằng dấu phẩy, ví d�
 
 Chạy `MAINTAIN` khi: (1) cấu trúc repo đổi — thêm/xóa file, đổi luật, đổi `PROTOCOL/`; (2) mỗi 10 phiên (đếm theo `SESSION_REF` trong `STATE.md`). Ba bước:
 
-1. **Rà hash:** chạy `sha256sum LAW/00-SUPREME-LAW.md PROTOCOL/*.md scope-reality-check/SKILL.md`, đối chiếu khối `HASH CHUẨN` trong `STATE.md`. Lệch => đọc lại đúng file bị lệch theo `PROTOCOL/resume-protocol.md` §2, không tự sửa hash ngầm.
+1. **Rà hash:** chạy đúng MỘT dòng lệnh sau (đầu ra có sẵn các khóa `LAW_SHA256:`, `PROTOCOL_HASHES:`, `SKILL_HASH:` đúng tên trong `STATE.md`, để đối chiếu không sinh DRIFT giả):
+
+```text
+( echo "LAW_SHA256: $(sha256sum LAW/00-SUPREME-LAW.md | cut -d' ' -f1)"; echo "PROTOCOL_HASHES:"; for f in PROTOCOL/*.md; do echo "- $f:$(sha256sum "$f" | cut -d' ' -f1)"; done; echo "SKILL_HASH: $(sha256sum scope-reality-check/SKILL.md | cut -d' ' -f1)" )
+```
+
+> **Chạy đúng câu này, đừng tự viết lại script.** Đây là cách chữa 2 dòng DRIFT giả của phiên trước (hash bị gõ lại tay với khóa/định dạng lệch so với `STATE.md`, bị báo nhầm là lệch nội dung). Lệch thật => đọc lại file bị lệch theo `PROTOCOL/resume-protocol.md` §2, không tự sửa hash ngầm.
 2. **Rà con trỏ:** mọi đường dẫn được trỏ trong `AGENTS.md`, `STATE.md §CON TRỎ` và các file `PROTOCOL/*.md` phải tồn tại (`test -f <path>`). File bị trỏ nhưng chưa merge vào nhánh hiện tại phải được ghi rõ trạng thái — không để con trỏ treo im lặng.
 3. **Rà LỆNH:** mọi `LỆNH` trong file này và trong packet đã lưu phải còn chạy được nguyên văn. Lệnh hỏng => báo `MUI=c`.
 

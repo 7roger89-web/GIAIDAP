@@ -14,7 +14,7 @@ Bộ nhớ chung + sổ luật cho quy trình nhiều AI.
 | `STATE.md` | Điểm hồi sinh cho phiên mới: đang ở đâu, hash chuẩn, việc kế tiếp | `STATE.md` |
 | `LAW/` | Luật tối thượng, duy nhất + bảng ánh xạ nguồn | `LAW/00-SUPREME-LAW.md` |
 | `PROTOCOL/` | Cách vận hành: hồi sinh, Arena, vòng A/B/C, handoff; lớp chứng minh (`kiem.md`) + cách nghĩ trước khi làm (`cach-nghi.md`) | `PROTOCOL/*.md` |
-| `REGISTER/` | Sổ phương án đã bị bác — chống tái tranh luận | `REGISTER/BAC.md` |
+| `REGISTER/` | Sổ phương án đã bị bác — chống tái tranh luận + lịch sử dài hạn (append-only) | `REGISTER/BAC.md`, `REGISTER/LICH-SU.md` |
 | `KB/` | Tri thức lĩnh vực tra theo từ khóa + khuôn mẫu | `KB/INDEX.md` |
 | `RUNS/` | Mục lục + nhật ký từng phiên chạy | `RUNS/INDEX.md` |
 | `scope-reality-check/` | Chế độ suy nghĩ kiểm định thực tế gắn theo vai (không thay luật) | `scope-reality-check/SKILL.md` |
@@ -48,28 +48,29 @@ Hai file `PROTOCOL/` bịt lỗ "kiểm được việc ĐỌC nhưng chưa khai
 4. Làm việc bounded => một nhánh => một PR; ghi kết quả vào `RUNS/` kèm `SESSION_REF` + `PR_HEAD_SHA`.
 5. Dừng khi đủ bằng chứng; không tự nhận PASS; không tự merge.
 
-## Cây file hiện tại
+## Cây file hiện tại (24 file, đếm bằng `git ls-files | wc -l` ngày 2026-10-27)
 
 ```text
-README.md
 AGENTS.md
-STATE.md
-LAW/00-SUPREME-LAW.md
+KB/INDEX.md
+KB/_TEMPLATE.md
 LAW/00-PROVENANCE-MAP.md
+LAW/00-SUPREME-LAW.md
 PROTOCOL/arena-agent-mode.md
 PROTOCOL/cach-nghi.md
 PROTOCOL/handoff-packet.md
 PROTOCOL/kiem.md
 PROTOCOL/multi-brain-loop.md
 PROTOCOL/resume-protocol.md
+README.md
 REGISTER/BAC.md
-KB/INDEX.md
-KB/_TEMPLATE.md
-RUNS/README.md
-RUNS/INDEX.md
-RUNS/0000-pr1-verify/QUESTION.md
+REGISTER/LICH-SU.md
 RUNS/0000-pr1-verify/B.md
 RUNS/0000-pr1-verify/DECISION.md
+RUNS/0000-pr1-verify/QUESTION.md
+RUNS/INDEX.md
+RUNS/README.md
+STATE.md
 scope-reality-check/SKILL.md
 scope-reality-check/agents/openai.yaml
 scope-reality-check/references/evals.md
@@ -82,4 +83,4 @@ scope-reality-check/references/evidence-rules.md
 - Không phải nơi lưu transcript chat dài.
 - Không phải daemon, script hay CI phức tạp.
 
-TRẠNG THÁI: Mốc hiện tại `MỐC=KHUNG` — cập nhật 2026-10-27 (đã lắp cơ chế hồi sinh + bind skill `scope-reality-check`; chỉ chuyển sang `ĐANG_VẬN_HÀNH` khi T1–T6 trong `PROTOCOL/resume-protocol.md` §11 đạt bởi một PHIÊN MỚI thật). `PROVENANCE_STATUS=PENDING_VERIFICATION`: bảng ánh xạ `V4` chưa qua B kiểm lại diff `84ae8b3..HEAD`. `KB/INDEX.md` chưa có mục tri thức `ACTIVE` (đã có `KB/_TEMPLATE.md`). Lớp chứng minh verification-first (`PROTOCOL/kiem.md` + `PROTOCOL/cach-nghi.md`, khối `CÁCH CHỨNG MINH` và trường `RESTATE` trong mọi packet) đã lắp vào cold-start và handoff; PR của lớp này xếp **sau PR #4 và #5**, chưa merge — chi tiết nợ rebase xem `STATE.md`.
+TRẠNG THÁI: Mốc hiện tại `MỐC=KHUNG` — cập nhật 2026-10-27 (đã lắp cơ chế hồi sinh + bind skill `scope-reality-check`; chỉ chuyển sang `ĐANG_VẬN_HÀNH` khi T1–T6 trong `PROTOCOL/resume-protocol.md` §11 đạt bởi một PHIÊN MỚI thật). `PROVENANCE_STATUS=PENDING_VERIFICATION`: bảng ánh xạ `V4` chưa qua B kiểm lại diff `84ae8b3..HEAD`. `KB/INDEX.md` chưa có mục tri thức `ACTIVE` (đã có `KB/_TEMPLATE.md`). Lớp chứng minh verification-first (`PROTOCOL/kiem.md` + `PROTOCOL/cach-nghi.md`) đã vào main qua PR #6 (merged 06:37:18Z). PR #5 (vá 4 lỗ tự mục) không vào main vì base là nhánh #4; nội dung đó được đưa lên main bởi PR reconcile từ nhánh `arena/ea8a6620-giaidap`, đang chờ Owner review. Chi tiết xem `STATE.md`.

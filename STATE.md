@@ -31,12 +31,12 @@ PR_STATE: #3 CLOSED 2026-10-27 (không merge)
 PR_STATE: #4 MERGED 2026-10-27 (main @ 03639d4)
 PR_STATE: #5 MERGED 2026-10-27 (base arena/b960bf99-giaidap — KHÔNG vào main; nội dung đưa lên main bởi PR reconcile)
 PR_STATE: #6 MERGED 2026-10-27 (main @ 60d6cc0 — merge sau #4)
-PR_STATE: PR-RECONCILE (nhánh arena/ea8a6620-giaidap → main) OPEN 2026-10-27 — số PR xác nhận khi mở
+PR_STATE: #7 OPEN 2026-10-27 (PR reconcile: nhánh arena/ea8a6620-giaidap → main; chờ Owner review, chưa merge)
 ```
 
 ## VIỆC ĐANG MỞ
 - 0000-pr1-verify — OPEN (verdict gần nhất của B cho head 84ae8b3: PASS_WITH_FIXES; bản V4 chưa kiểm lại) — Giao vai B ở phiên mới kiểm lại diff 84ae8b3..HEAD (LUẬT 12, LUẬT 08, map V4, KB/INDEX.md §MỞ RỘNG, cặp hash B.md)
-- PR reconcile (nhánh arena/ea8a6620-giaidap → main) — OPEN, chờ Owner review; Writer không tự merge.
+- PR #7 (nhánh arena/ea8a6620-giaidap → main) — OPEN, chờ Owner review; Writer không tự merge.
 
 ## NEXT_ONE_ACTION
 Owner review và quyết định merge PR reconcile (nhánh arena/ea8a6620-giaidap → main). Sau khi Owner merge: phiên đầu tiên đổi `POST_MERGE_RECONCILE=NEEDED` và chạy `PROTOCOL/resume-protocol.md` §13 TRƯỚC; rồi mới giao vai B (phiên mới, EVIDENCE_MODE=SEALED) kiểm lại diff 84ae8b3..HEAD trước khi xét gỡ PENDING_VERIFICATION.

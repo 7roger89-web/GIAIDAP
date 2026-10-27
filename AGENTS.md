@@ -7,8 +7,9 @@ TRẠNG THÁI: ACTIVE | NGÀY: 2026-10-27
 1. `STATE.md`
 2. `LAW/00-SUPREME-LAW.md`
 3. `PROTOCOL/resume-protocol.md` và `PROTOCOL/multi-brain-loop.md`
-4. `RUNS/INDEX.md`
-5. `KB/INDEX.md`
+4. `PROTOCOL/cach-nghi.md`
+5. `RUNS/INDEX.md`
+6. `KB/INDEX.md`
 
 Trước khi đề xuất phương án mới, bắt buộc đọc `REGISTER/BAC.md`.
 Chế độ suy nghĩ gắn kèm: `scope-reality-check/SKILL.md` (chi tiết binding tại `PROTOCOL/multi-brain-loop.md` §11). Skill KHÔNG thay luật.
@@ -76,11 +77,14 @@ Không trộn nhãn. Không nâng `INFERENCE` thành `FACT`. Không bịa nguồ
 ## 4. Khi nhận một task
 
 1. Phát `LAW_CHECK` rồi `RESUME_CHECK`.
-2. Xác định vai: A / B / C / R — Resumer / tay chân / Writer.
-3. Chỉ đọc đúng phạm vi input của vai (xem `PROTOCOL/multi-brain-loop.md` và `PROTOCOL/resume-protocol.md` §8, §10; vai `R — Resumer` chỉ làm `NEXT_ONE_ACTION` hoặc việc packet cấp, không mở vòng A/B/C, không sửa luật).
-4. Ghi output đúng đường dẫn, đúng header chuẩn.
-5. Liệt kê `UNKNOWN` và `NEXT_ONE_ACTION`.
-6. Nếu là tay chân: trả `RETURN_PACKET` theo `PROTOCOL/handoff-packet.md`.
+2. Phát `RESTATE` (diễn giải lại việc bằng lời của mình) trước khi làm; lệch packet => `RESTATE_MISMATCH=YES` và dừng (`PROTOCOL/cach-nghi.md` §1).
+3. Khai `CÁCH CHỨNG MINH` trước khi làm: lệnh thật + kỳ vọng máy đọc được + artifact + phương án dự phòng (`PROTOCOL/kiem.md` §1).
+4. Gặp MÙI (a–d tại `PROTOCOL/kiem.md` §4): ghi `MUI=<a|b|c|d>` vào output, báo Owner, không tự sửa ngoài phạm vi.
+5. Xác định vai: A / B / C / R — Resumer / tay chân / Writer.
+6. Chỉ đọc đúng phạm vi input của vai (xem `PROTOCOL/multi-brain-loop.md` và `PROTOCOL/resume-protocol.md` §8, §10; vai `R — Resumer` chỉ làm `NEXT_ONE_ACTION` hoặc việc packet cấp, không mở vòng A/B/C, không sửa luật).
+7. Ghi output đúng đường dẫn, đúng header chuẩn.
+8. Liệt kê `UNKNOWN` và `NEXT_ONE_ACTION`.
+9. Nếu là tay chân: trả `RETURN_PACKET` theo `PROTOCOL/handoff-packet.md`.
 
 ## 5. Không được làm
 

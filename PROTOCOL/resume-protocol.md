@@ -12,8 +12,9 @@ Phiên mới vào repo đọc theo thứ tự:
 2. `STATE.md`
 3. `LAW/00-SUPREME-LAW.md`
 4. `PROTOCOL/resume-protocol.md` (file này) và `PROTOCOL/multi-brain-loop.md`
-5. `RUNS/INDEX.md`
-6. `KB/INDEX.md`
+5. `PROTOCOL/cach-nghi.md`
+6. `RUNS/INDEX.md`
+7. `KB/INDEX.md`
 
 Quy tắc định vị:
 
@@ -24,7 +25,11 @@ Quy tắc định vị:
 
 ## 2. Biên lai hồi sinh (`RESUME_CHECK`)
 
-Ngay sau dòng `LAW_CHECK`, mọi phiên tiếp việc phải phát biên lai `RESUME_CHECK`. Hai khối dưới đây là **TEMPLATE**, không phải biên lai thật:
+Ngay sau dòng `LAW_CHECK`, mọi phiên tiếp việc phải phát biên lai `RESUME_CHECK`.
+
+- Nếu packet của việc có trường `RESTATE` (mọi packet theo `PROTOCOL/handoff-packet.md` bản 10 trường đều có), phát `RESTATE` **trước cả `LAW_CHECK`**; thứ tự output là `RESTATE` → `LAW_CHECK` → `RESUME_CHECK`. Diễn giải lệch packet => `RESTATE_MISMATCH=YES`, dừng việc thật (chi tiết tại `PROTOCOL/cach-nghi.md` §1).
+
+Hai khối dưới đây là **TEMPLATE**, không phải biên lai thật:
 
 ```text
 RESUME_CHECK=PASS | STATE_HEAD=<sha> | READ_HEAD=<sha> | LAW_HASH_MATCH=<YES|NO> | PROTOCOL_HASH_MATCH=<YES|NO> | SKILL_HASH_MATCH=<YES|NO> | OPEN=<...> | NEXT=<...>
@@ -85,9 +90,9 @@ Quy ước kỹ thuật bắt buộc:
 ## 8. Phân tầng bộ đọc (tiết kiệm ngữ cảnh, đọc đủ là dừng)
 
 - **`BỘ ĐỌC TỐI THIỂU` (luôn đọc ở mọi phiên):**
-  `AGENTS.md`, `STATE.md`, `LAW/00-SUPREME-LAW.md`, `PROTOCOL/resume-protocol.md`.
+  `AGENTS.md`, `STATE.md`, `LAW/00-SUPREME-LAW.md`, `PROTOCOL/resume-protocol.md`, `PROTOCOL/cach-nghi.md`.
 - **`ĐỌC KHI CẦN` (theo nhiệm vụ):**
-  `PROTOCOL/multi-brain-loop.md` (khi chạy/kiểm vòng A/B/C hoặc dùng binding skill), `RUNS/INDEX.md`, `REGISTER/BAC.md` (bắt buộc trước mọi đề xuất phương án), `KB/INDEX.md` (khi tra cứu tri thức lĩnh vực theo LUẬT 12), `DECISION.md` của `RUN` đang mở.
+  `PROTOCOL/multi-brain-loop.md` (khi chạy/kiểm vòng A/B/C hoặc dùng binding skill), `PROTOCOL/kiem.md` (khi soạn packet có khối `CÁCH CHỨNG MINH`, trước mọi thao tác ghi/đổi trạng thái, hoặc khi chạy `MAINTAIN`), `RUNS/INDEX.md`, `REGISTER/BAC.md` (bắt buộc trước mọi đề xuất phương án), `KB/INDEX.md` (khi tra cứu tri thức lĩnh vực theo LUẬT 12), `DECISION.md` của `RUN` đang mở.
 - **`CHỈ ĐỌC KHI PACKET YÊU CẦU`:**
   `B.md` đầy đủ (hoặc hồ sơ chi tiết của các `RUN` đã đóng).
 - **Quy tắc dừng đọc:** đọc theo tầng tới khi đủ bằng chứng trả lời đúng câu hỏi trong phạm vi của vai thì **DỪNG** (LUẬT 14); không đọc tràn các file ngoài phạm vi cách ly của vai (§2 `multi-brain-loop.md`).
@@ -128,5 +133,15 @@ LAW/00-SUPREME-LAW.md > PROTOCOL/*.md > STATE.md > RUNS/* > KB/*
 ## 12. CÂU LỆNH PHIÊN MỚI
 
 ```text
-Đọc repo https://github.com/7roger89-web/GIAIDAP theo thứ tự trong AGENTS.md, phát LAW_CHECK rồi RESUME_CHECK, đọc REGISTER/BAC.md, dùng skill scope-reality-check đúng vai, rồi báo: việc đang mở, NEXT_ONE_ACTION, BLOCKER, UNKNOWN. Không đoán, không hỏi lại nếu repo đã trả lời được.
+Đọc repo https://github.com/7roger89-web/GIAIDAP theo thứ tự trong AGENTS.md, phát RESTATE (nếu packet có trường này) rồi LAW_CHECK rồi RESUME_CHECK, đọc REGISTER/BAC.md, dùng skill scope-reality-check đúng vai, rồi báo: việc đang mở, NEXT_ONE_ACTION, BLOCKER, UNKNOWN. Không đoán, không hỏi lại nếu repo đã trả lời được.
 ```
+
+## 13. Nhịp `MAINTAIN` (trỏ về `PROTOCOL/kiem.md` §5)
+
+Khi cấu trúc repo đổi (thêm/xóa file, đổi luật, đổi `PROTOCOL/`) hoặc mỗi 10 phiên (đếm theo `SESSION_REF` trong `STATE.md`), bắt buộc chạy `MAINTAIN` theo đúng 3 bước tại `PROTOCOL/kiem.md` §5:
+
+1. rà hash (`sha256sum` đối chiếu khối `HASH CHUẨN` trong `STATE.md`);
+2. rà mọi con trỏ (`test -f <path>`), không để đường dẫn treo im lặng;
+3. rà mọi `LỆNH` trong `PROTOCOL/kiem.md` và packet đã lưu còn chạy được nguyên văn; lệnh hỏng => báo `MUI=c`.
+
+Bản ghi `MAINTAIN` đi trong cùng commit với lần cập nhật `STATE.md` (§5). Đây là bảo trì giao thức, không phải vòng A/B/C và không mở `RUN` mới.

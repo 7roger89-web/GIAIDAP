@@ -149,6 +149,10 @@ Cách hiểu của GIAIDAP (không phải định nghĩa chính thức của Are
 
 **UNKNOWN:** không tìm thấy tài liệu chính thức dùng đúng câu "Was this task successful?" với ba nút `YES` / `KEEP WORKING` / `NO`. Tài liệu chính thức dùng "Did this complete your task?" (yes/no) và "keep working" (S1, S6). Nếu UI thực tế khác, map theo **ngữ nghĩa** ở bảng trên và ghi `UI_WORDING=UNKNOWN` trong biên bản.
 
+### 7.3. Owner phê duyệt merge bằng MERGE_OK
+
+Agent ĐƯỢC tự merge PR do chính nó mở SAU KHI Owner đã comment đúng chuỗi MERGE_OK trên PR đó; kiểm bằng `gh pr view <n> --json comments` (grep MERGE_OK) TRƯỚC khi merge; không có comment MERGE_OK thì không merge. Owner comment = phê duyệt, agent merge chỉ là thao tác cơ học, không phải tự chứng nhận.
+
 ## 8. Danh sách UNKNOWN
 
 1. Hành vi UI chính xác của tiêu đề chat (Arena có tự lấy dòng đầu tiên làm tiêu đề không).

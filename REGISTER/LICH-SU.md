@@ -30,3 +30,4 @@ cuối, KHÔNG sửa / xóa / sắp xếp lại dòng đã lưu. Mỗi dòng ghi
 - [ghi 2026-10-27] luật chống: BASE_PHAI_LA_MAIN (PROTOCOL/arena-agent-mode.md §4.1) + MAIN_CONTENT_CHECK (PROTOCOL/resume-protocol.md §2)
 - [đẩy 2026-10-27] 2026-10-26 — Vá lần 6: lưu nguyên văn B.md, sửa LUẬT 12 theo D1, nâng map lên V3 — commit b1ba697 (PR #1)
 - [đẩy 2026-10-27] 2026-10-26 — Vá lần 7: khôi phục LUẬT 08 theo D4, tách 2 trường hash B.md theo D5, nâng map lên V4 — commit 9c4b63a (PR #1)
+- [đẩy 2026-10-27] 2026-10-26 — Merge khung luật và giao thức V1 vào main — commit 0a892a4 (PR #1: https://github.com/7roger89-web/GIAIDAP/pull/1)

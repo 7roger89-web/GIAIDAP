@@ -20,12 +20,16 @@ RUNS/<4 số>-<slug>/
 - Ví dụ: `RUNS/0001-nhap-khau-binh-nong-lanh/`.
 - Không đổi tên folder sau khi đã mở PR.
 
-## 2. File tối thiểu
+## 2. File tối thiểu và header
 
 - `A.md`, `B.md`, `C.md`: output của ba vai, theo `PROTOCOL/multi-brain-loop.md`.
-- Mọi file `B*.md` phải có **cả hai** field hash: `CONTENT_SHA256_B_DECLARED` (B tự khai; không khai ⇒ `UNKNOWN`) và `CONTENT_SHA256_WRITER_COMPUTED` (người ghi tự băm). Hai field khác nguồn, không thay thế nhau — chi tiết ở `PROTOCOL/multi-brain-loop.md` §4.
+- Header của mỗi file gồm 2 nhóm rõ ràng theo `PROTOCOL/multi-brain-loop.md` §4:
+  - **`TRƯỜNG BẮT BUỘC` (6 trường nền):** `RUN_ID`, `ROLE`, `INPUT_REF`, `DATE`, `MODEL` (`UNKNOWN` nếu không xác minh được), `LAW_CHECK`.
+  - **`TRƯỜNG MỞ RỘNG`:** `SESSION_REF`, `PR_HEAD_SHA` (bắt buộc trên mọi file output mới để bù cho `MODEL=UNKNOWN`), `CONTAMINATED`, `MODEL` (ghi chú nguồn tự khai nếu có), `TOOL`, `REVIEWED_HEAD`, 2 field hash của `B*.md`, `CONTENT_STATUS`, `LOẠI RUN`, `SELF_CORRECTED`.
+- **Quy tắc bất biến cho `B*.md`:** mọi file `B*.md` phải có **cả hai** field hash: `CONTENT_SHA256_B_DECLARED` (B tự khai; không khai ⇒ `UNKNOWN`) và `CONTENT_SHA256_WRITER_COMPUTED` (người ghi tự băm). Hai field khác nguồn, không thay thế nhau — chi tiết quy ước băm ở `PROTOCOL/multi-brain-loop.md` §4.2.
 - `DECISION.md`: bản ghi kết luận, do Arena ghi từ `C.md` + quyết định của Owner.
-- `QUESTION.md` (tùy chọn, nên có): câu hỏi thô. Không dán kết luận của A/B/C vào đây.
+- `QUESTION.md` (nên có cho mọi RUN): câu hỏi thô. Không dán kết luận của A/B/C vào đây.
+- Mọi thay đổi mở/đóng RUN phải cập nhật đồng thời vào `RUNS/INDEX.md` và `STATE.md` trong cùng commit (`PROTOCOL/resume-protocol.md` §5).
 
 Không lưu transcript chat dài. Chỉ lưu output có cấu trúc, đường dẫn nguồn và quyết định.
 

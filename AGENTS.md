@@ -1,14 +1,37 @@
 # AGENTS.md — Entrypoint cho mọi AI/agent
 
-TRẠNG THÁI: ACTIVE | NGÀY: 2026-10-26
+TRẠNG THÁI: ACTIVE | NGÀY: 2026-10-27
 
-Đây là cửa vào duy nhất. Đọc file này trước, sau đó đọc theo thứ tự **BẮT BUỘC**:
+Đây là cửa vào duy nhất. Đọc file này trước, sau đó đọc theo thứ tự **BẮT BUỘC** (cold-start theo `PROTOCOL/resume-protocol.md` §1; phân tầng tiết kiệm ngữ cảnh xem §8 file đó):
 
-1. `LAW/00-SUPREME-LAW.md`
-2. `PROTOCOL/multi-brain-loop.md`
-3. `KB/INDEX.md`
+1. `STATE.md`
+2. `LAW/00-SUPREME-LAW.md`
+3. `PROTOCOL/resume-protocol.md` và `PROTOCOL/multi-brain-loop.md`
+4. `RUNS/INDEX.md`
+5. `KB/INDEX.md`
 
-Không bỏ bước. Thiếu file hoặc không đọc được => `LAW_CHECK=BLOCKED`, không làm việc thật.
+Trước khi đề xuất phương án mới, bắt buộc đọc `REGISTER/BAC.md`.
+Chế độ suy nghĩ gắn kèm: `scope-reality-check/SKILL.md` (chi tiết binding tại `PROTOCOL/multi-brain-loop.md` §11). Skill KHÔNG thay luật.
+
+Không bỏ bước. Thiếu file hoặc không đọc được => `LAW_CHECK=BLOCKED` hoặc `RESUME_CHECK=BLOCKED`, không làm việc thật.
+
+## 0. Hồi sinh (bắt buộc)
+
+Mọi phiên vào repo phải định vị trạng thái trước khi làm việc theo `PROTOCOL/resume-protocol.md`:
+
+1. Đọc `STATE.md` **trước** `LAW/00-SUPREME-LAW.md` để biết repo đang ở đâu, nhưng vẫn bắt buộc đọc `LAW/00-SUPREME-LAW.md` để phát `LAW_CHECK` riêng.
+2. Ngay sau `LAW_CHECK`, kiểm tra quan hệ tổ tiên `SINH_TỪ_HEAD`, đối chiếu `sha256sum` thật và kiểm `STATE_TRUST=OK|DRIFT`, rồi phát biên lai `RESUME_CHECK` (hai dòng dưới là **TEMPLATE**):
+
+```text
+RESUME_CHECK=PASS | STATE_HEAD=<sha> | READ_HEAD=<sha> | LAW_HASH_MATCH=<YES|NO> | PROTOCOL_HASH_MATCH=<YES|NO> | SKILL_HASH_MATCH=<YES|NO> | OPEN=<...> | NEXT=<...>
+```
+
+```text
+RESUME_CHECK=BLOCKED | REASON=<lý do>
+```
+
+3. Nếu `STATE.md` không tồn tại, `STATE_HEAD` không phải tổ tiên của `HEAD`, hoặc gặp điều kiện `BLOCKED` => **dừng ngay**, không làm việc thật.
+4. Sau mỗi việc bounded làm đổi trạng thái, bắt buộc cập nhật `STATE.md` + `RUNS/INDEX.md` (+ `REGISTER/BAC.md` nếu có phương án bị bác) trong cùng commit.
 
 ## 1. Biên lai đọc luật (bắt buộc)
 
@@ -52,9 +75,9 @@ Không trộn nhãn. Không nâng `INFERENCE` thành `FACT`. Không bịa nguồ
 
 ## 4. Khi nhận một task
 
-1. Phát `LAW_CHECK`.
-2. Xác định vai: A / B / C / tay chân / Writer.
-3. Chỉ đọc đúng phạm vi input của vai (xem `PROTOCOL/multi-brain-loop.md`).
+1. Phát `LAW_CHECK` rồi `RESUME_CHECK`.
+2. Xác định vai: A / B / C / R — Resumer / tay chân / Writer.
+3. Chỉ đọc đúng phạm vi input của vai (xem `PROTOCOL/multi-brain-loop.md` và `PROTOCOL/resume-protocol.md` §8, §10; vai `R — Resumer` chỉ làm `NEXT_ONE_ACTION` hoặc việc packet cấp, không mở vòng A/B/C, không sửa luật).
 4. Ghi output đúng đường dẫn, đúng header chuẩn.
 5. Liệt kê `UNKNOWN` và `NEXT_ONE_ACTION`.
 6. Nếu là tay chân: trả `RETURN_PACKET` theo `PROTOCOL/handoff-packet.md`.

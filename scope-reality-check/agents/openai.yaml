@@ -1,3 +1,4 @@
+name: scope-reality-check
 interface:
   display_name: "Scope Reality Check"
-  short_description: "Phản biện gắt có bằng chứng, tự sửa khi sai, rồi cắt scope về thứ ship được."
+  short_description: "Chế độ kiểm định thực tế có bằng chứng khả bác, bóc độ phức tạp ẩn, tự sửa khi dữ kiện đổi, ra UNKNOWN khi chưa kiểm được, và thu hẹp về đúng một đơn vị bounded (gắn ROLE_BOUND cho vai B/C trong GIAIDAP). Ở chế độ USER_EXPLICIT, chỉ kích hoạt khi có yêu cầu rõ như \"phản biện gắt\", \"tạt nước lạnh\", \"xé kế hoạch\", \"đang ngáo không\"; KHÔNG kích hoạt cho tác vụ thường như \"xem repo\", \"build MVP\", \"debug\", \"review kiến trúc\"."
